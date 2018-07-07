@@ -1,0 +1,28 @@
+{
+    "name": "benjamin-raymond.pro",
+    "version": "0.0.0",
+    "description": "",
+    "main": "./dist/main.js",
+    "types": "./dist/main.d.ts",
+    "scripts": {
+        "clean": "rm -rf ./dist/*;",
+        "build": "npm run clean; gulp;"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^10.5.2",
+        "browserify": "^16.2.2",
+        "gulp": "^4.0.0",
+        "gulp-minify-html": "^1.0.6",
+        "gulp-sourcemaps": "^2.6.4",
+        "gulp-typescript": "^5.0.0-alpha.3",
+        "gulp-uglify": "^3.0.0",
+        "tsify": "^4.0.0",
+        "typescript": "^2.9.2",
+        "vinyl-buffer": "^1.0.1",
+        "vinyl-source-stream": "^2.0.0"
+    }
+}
