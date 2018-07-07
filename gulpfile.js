@@ -7,11 +7,17 @@ const buffer = require('vinyl-buffer');
 const tsify = require("tsify");
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
+const jsObfuscator = require('gulp-javascript-obfuscator');
+const htmlmin = require('gulp-htmlmin');
 const htmlPaths = { pages: ['app/html/*.html'] };
 const scssPaths = { pages: ['app/css/*.scss'] };
 const resPaths = { pages: ['app/res/*'] };
 
-gulp.task("copy-html", () => gulp.src(htmlPaths.pages).pipe(gulp.dest('dist/')));
+gulp.task("copy-html", () => {
+    return gulp.src(htmlPaths.pages)
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('dist/'))
+});
 gulp.task("copy-res", () => gulp.src(resPaths.pages) .pipe(gulp.dest('dist/res')));
 
 gulp.task("copy-scss", function () {
@@ -36,6 +42,7 @@ gulp.task("typescript", function () {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
+        .pipe(jsObfuscator())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest("dist/src/"));
 });

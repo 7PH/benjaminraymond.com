@@ -1,8 +1,25 @@
-function showHello(divName: string, name: string) {
-    const elt: any = document.getElementById(divName);
-    elt.innerText = "Hello TypeScript";
+import {Stage} from "./engine/Stage";
+import {NodeContainer} from "./nodes/NodeContainer";
+
+let nodeContainer;
+let stage;
+
+function init() {
+    stage = new Stage('animation-canvas');
+
+    nodeContainer = new NodeContainer(stage);
+    nodeContainer.populate();
+
+    stage.addChild(nodeContainer);
+    stage.run();
+
+    setInterval(() => {
+        const fps = (1 / stage.lastDelta);
+        let el = document.getElementById('fps');
+        if (el === null)
+            return;
+        el.innerHTML = Math.floor(fps).toString();
+    }, 100);
 }
 
-setTimeout(() => {
-    showHello("greeting", "TypeScript");
-}, 500);
+window.onload = init;

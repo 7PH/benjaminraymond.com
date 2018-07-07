@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js"></script>
     <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-113541070-1');</script>
 </head>
 <body>
@@ -17,7 +18,7 @@
             <div id="page-title" class="slow-appearing">
                 <h1>My Name</h1>
                 <p class="subtitle">My Title</p>
-                <p class="text"><a href="/res/cv.pdf" target="_blank" rel="nofollow">See my CV</a></p>
+                <p class="text"><a href="res/cv.pdf" target="_blank" rel="nofollow">See my CV</a></p>
             </div>
         </header>
     </div>
@@ -28,7 +29,7 @@
 
     <div id="animation-container">
         <p id="fps-info"><span id="fps">0</span> fps</p>
-        <canvas id="animation-canvas"></canvas>
+        <div id="animation-canvas"></div>
     </div>
     <script src="src/bundle.js"></script>
 </body>
