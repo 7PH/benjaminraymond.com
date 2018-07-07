@@ -1,0 +1,112 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    height: 100%;
+    margin: 0;
+    color: white;
+    overflow: hidden;
+    position: relative;
+
+}
+
+
+@keyframes slow-appearing {
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.slow-appearing {
+    animation-duration: 12s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-name: slow-appearing;
+}
+
+#animation-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+#animation-container > #fps-info {
+    margin-left: 10px;
+    color: #888;
+}
+#animation-container > canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#page-content {
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+header {
+    text-align: center;
+}
+#page-title {
+    font-size: 250%;
+    font-family: 'Kalam';
+}
+#page-title > h1 {
+    font-size: 255%;
+    margin-top: 20px;
+    margin-bottom: -52px;
+    font-family: 'Sacramento';
+}
+#page-title > p.subtitle {
+    margin-top: 0;
+    margin-bottom: -35px;
+}
+#page-title > p.text {
+    font-size: 50%;
+}
+#page-title a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    color: white;
+}
+#footer-content {
+    margin: 30px;
+    width: 50px;
+    text-align: right;
+}
+#footer-content .fa {
+    color: white;
+    font-size: 300%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 745px){
+    #page-title > h1 {
+        font-size: 120%;
+        margin-bottom: 5px;
+    }
+    #page-title > p.subtitle {
+        margin-bottom: -25px;
+        font-size: 70%;
+    }
+}
+
+@media screen and (max-width: 360px){
+    #page-title {
+        font-style: 80%;
+    }
+}

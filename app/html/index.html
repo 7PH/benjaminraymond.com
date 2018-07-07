@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Name</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-113541070-1');</script>
 </head>
 <body>
-    <p id="greeting">Loading ...</p>
-    <script src="bundle.js"></script>
+    <div id="page-content">
+        <header>
+            <div id="page-title" class="slow-appearing">
+                <h1>My Name</h1>
+                <p class="subtitle">My Title</p>
+                <p class="text"><a href="/res/cv.pdf" target="_blank" rel="nofollow">See my CV</a></p>
+            </div>
+        </header>
+    </div>
+    <footer>
+        <div id="footer-content">
+        </div>
+    </footer>
+
+    <div id="animation-container">
+        <p id="fps-info"><span id="fps">0</span> fps</p>
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    <script src="src/bundle.js"></script>
 </body>
 </html>
