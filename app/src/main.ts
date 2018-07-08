@@ -1,13 +1,10 @@
 import {Stage} from "./engine/Stage";
 import {NodeContainer} from "./nodes/NodeContainer";
 
-let nodeContainer;
-let stage;
-
 function init() {
-    stage = new Stage('animation-canvas');
+    const stage: Stage = new Stage('animation-canvas');
 
-    nodeContainer = new NodeContainer(stage);
+    let nodeContainer = new NodeContainer(stage);
     nodeContainer.populate();
 
     stage.addChild(nodeContainer);

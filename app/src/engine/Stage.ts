@@ -7,7 +7,7 @@ export class Stage extends DisplayObjectContainer {
 
     private canvasContainer: HTMLDivElement;
 
-    private lastDelta: any;
+    lastDelta: any;
 
     private renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
 
@@ -24,8 +24,8 @@ export class Stage extends DisplayObjectContainer {
 
         /** Renderer */
         this.renderer = PIXI.autoDetectRenderer(
-            this.canvasContainer.clientWidth,
-            this.canvasContainer.clientHeight
+            window.innerWidth,
+            window.innerHeight
         );
         this.canvasContainer.appendChild(this.renderer.view);
         this.renderer.render(this);

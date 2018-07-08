@@ -1,0 +1,47 @@
+-
+    const data = {
+        pageTitle: 'Benjamin Raymond',
+        name: 'Benjamin Raymond',
+        title: 'the subtitle',
+        cvLinkTitle: 'See my CV',
+        cvLink: 'assets/cv.pdf'
+    }
+
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+        title= data.pageTitle
+
+        link(href='https://fonts.googleapis.com/css?family=Sacramento', rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Kalam', rel='stylesheet')
+        link(rel='stylesheet', href='styles.css')
+
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js')
+
+        script
+            | window.dataLayer = window.dataLayer || [];
+            | function gtag(){dataLayer.push(arguments);}
+            | gtag('js', new Date());
+            | gtag('config', 'UA-113541070-1');
+    body
+        div#page-content
+            header
+                div#page-title(class='slow-appearing')
+                    h1= data.name
+                    p(class='subtitle')= data.title
+                    p(class='text')
+                        a(href=data.cvLink, target='_blank', rel='nofollow')= data.cvLinkTitle
+
+        footer
+            div#footer-content
+
+        div#animation-container
+            p#fps-info
+                span#fps 0
+                | fps
+            div#animation-canvas
+
+
+        script(src='bundle.js')

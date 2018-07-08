@@ -14,12 +14,8 @@ export class Node extends DisplayObject {
     }
 
     redraw() {
-        if (typeof this.graphics === 'undefined') {
-            console.log('fuck', this);
+        if (typeof this.graphics === 'undefined')
             return;
-        } else {
-            console.log('drawing', this.color);
-        }
         this.graphics.clear();
         this.graphics.beginFill(this.color);
         this.graphics.drawCircle(0, 0, 2);

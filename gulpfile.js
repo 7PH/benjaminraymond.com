@@ -9,22 +9,25 @@ const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const jsObfuscator = require('gulp-javascript-obfuscator');
 const htmlmin = require('gulp-htmlmin');
-const htmlPaths = { pages: ['app/html/*.html'] };
-const scssPaths = { pages: ['app/css/*.scss'] };
-const resPaths = { pages: ['app/res/*'] };
+const pug = require('gulp-pug');
 
-gulp.task("copy-html", () => {
-    return gulp.src(htmlPaths.pages)
+const pugPaths = { pages: ['app/views/*.pug'] };
+const scssPaths = { pages: ['app/css/*.scss'] };
+const resPaths = { pages: ['app/assets/*'] };
+
+gulp.task("copy-views", () => {
+    return gulp.src(pugPaths.pages)
+        .pipe(pug())
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest('dist/'))
 });
-gulp.task("copy-res", () => gulp.src(resPaths.pages) .pipe(gulp.dest('dist/res')));
+gulp.task("copy-assets", () => gulp.src(resPaths.pages) .pipe(gulp.dest('dist/assets')));
 
 gulp.task("copy-scss", function () {
     return gulp.src(scssPaths.pages)
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest('dist'));
 });
 
 
@@ -43,8 +46,7 @@ gulp.task("typescript", function () {
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(jsObfuscator())
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest("dist/src/"));
+        .pipe(gulp.dest("dist"));
 });
 
-gulp.task('default', gulp.parallel('copy-html', 'copy-scss', 'copy-res', 'typescript'));
+gulp.task('default', gulp.parallel('copy-views', 'copy-scss', 'copy-assets', 'typescript'));

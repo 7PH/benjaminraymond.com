@@ -55,9 +55,9 @@ export class NodeLinker extends DisplayObject {
                 node.setForce('node_' + otherNode.id, new PIXI.Point(- fx, - fy));
                 otherNode.setForce('node_' + node.id, new PIXI.Point(fx, fy));
 
-                let c = (255 * Math.exp(-dist * 0.03)).toString(16);
+                let c = Math.floor((255 * Math.exp(-dist * 0.03))).toString(16);
                 if (c.length == 1) c = '0' + c;
-                this.graphics.lineStyle(1, parseInt('0x' + c + c + c));
+                this.graphics.lineStyle(1,parseInt('0x' + c.repeat(3)));
                 this.graphics.beginFill(0x333333, 0.1);
                 this.graphics.moveTo(node.position.x, node.position.y);
                 this.graphics.lineTo(otherNode.position.x, otherNode.position.y);
