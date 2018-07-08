@@ -1,10 +1,37 @@
 -
     const data = {
+        pageFavicon: {
+            href: 'assets/favicon.png',
+            type: 'image/png'
+        },
         pageTitle: 'Benjamin Raymond',
         name: 'Benjamin Raymond',
-        title: 'the subtitle',
+        title: 'Software Engineer',
         cvLinkTitle: 'See my CV',
-        cvLink: 'assets/cv.pdf'
+        cvLink: 'assets/cv.pdf',
+        footerLinks: [
+            {
+                title: 'Send me an email',
+                href: 'mailto:b.raymond@protonmail.ch',
+                icon: 'fa-envelope',
+                rel: 'follow',
+                target: '_self'
+            },
+            {
+                title: 'See me on LinkedIn',
+                href: 'https://www.linkedin.com/in/b-raymond',
+                icon: 'fa-linkedin',
+                rel: 'nofollow',
+                target: '_blank'
+            },
+            {
+                title: 'Explore my GitHub',
+                href: 'https://github.com/7PH',
+                icon: 'fa-github',
+                rel: 'nofollow',
+                target: '_blank'
+            }
+        ]
     }
 
 doctype html
@@ -13,13 +40,14 @@ html
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
         title= data.pageTitle
+        link(rel='icon', href=data.pageFavicon.href, type=data.pageFavicon.type)
 
         link(href='https://fonts.googleapis.com/css?family=Sacramento', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Kalam', rel='stylesheet')
         link(rel='stylesheet', href='styles.css')
 
         script(src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js')
-
+        script(src='https://use.fontawesome.com/0cebcc1cf0.js')
         script
             | window.dataLayer = window.dataLayer || [];
             | function gtag(){dataLayer.push(arguments);}
@@ -36,6 +64,9 @@ html
 
         footer
             div#footer-content
+                each item in data.footerLinks
+                    a(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
+                        i(class='fa fa-white ' + item.icon)
 
         div#animation-container
             p#fps-info
