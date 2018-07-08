@@ -8,7 +8,7 @@ export class DisplayObjectContainer extends DisplayObject {
 
     }
 
-    update (delta) {
+    update (delta: number) {
         super.update(delta);
         
         for (let i = 0, j = this.children.length; i < j; ++i) {

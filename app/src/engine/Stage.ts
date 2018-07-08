@@ -3,17 +3,17 @@ import {DisplayObjectContainer} from "./DisplayObjectContainer";
 
 export class Stage extends DisplayObjectContainer {
 
-    private canvasContainerID: any;
+    public canvasContainerID: string;
 
-    private canvasContainer: HTMLDivElement;
+    public canvasContainer: HTMLDivElement;
 
-    lastDelta: any;
+    public lastDelta: number;
 
-    private renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
+    public renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
 
-    private mouse: any;
+    public mouse: any;
 
-    private lastUpdateDelta: any;
+    public lastUpdateDelta: number;
 
     constructor (canvasID) {
         super(null);
@@ -22,7 +22,6 @@ export class Stage extends DisplayObjectContainer {
         this.canvasContainer = document.getElementById(canvasID) as HTMLDivElement;
         this.lastDelta = 0;
 
-        /** Renderer */
         this.renderer = PIXI.autoDetectRenderer(
             window.innerWidth,
             window.innerHeight
@@ -30,8 +29,6 @@ export class Stage extends DisplayObjectContainer {
         this.canvasContainer.appendChild(this.renderer.view);
         this.renderer.render(this);
 
-        /** Mouse */
-        this.interactive = true;
         this.mouse = {};
         this.mouse.position = new PIXI.Point(0, 0);
         this.on('mousemove', (e, v, t) => {

@@ -6,6 +6,7 @@ export class Graphics extends PIXI.Graphics {
 
     constructor (stage) {
         super();
+
         this.stage = stage;
     }
 }

@@ -1,5 +1,4 @@
 import {DisplayObject} from "../engine/DisplayObject";
-import {Point} from "../engine/Point";
 
 
 export class Node extends DisplayObject {
@@ -30,22 +29,6 @@ export class Node extends DisplayObject {
 
         if (this.y < 0) this.y = this.stage.getHeight();
         else if (this.y > this.stage.getHeight()) this.y = 0;
-
-        const target = new PIXI.Point(
-            this.stage.getWidth() * 0.5,
-            this.stage.getHeight() * 0.5
-        );
-        const dist = Point.distance(this.position, target);
-        const a = Math.atan2(
-            target.y - this.position.y,
-            target.x - this.position.x
-        );
-        let fx = 0, fy = 0;
-        if (dist != 0) {
-            fx = 20000 * Math.cos(a) / dist;
-            fy = 20000 * Math.sin(a) / dist;
-        }
-        this.setForce('mouse_attraction', new PIXI.Point(fx, fy));
 
         this.redraw();
     }

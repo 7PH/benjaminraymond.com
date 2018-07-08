@@ -11,9 +11,7 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "gulp-htmlmin": "^4.0.0"
-    },
+    "dependencies": { },
     "devDependencies": {
         "@types/node": "^10.5.2",
         "@types/pixi.js": "^4.8.0",
@@ -26,6 +24,7 @@
         "gulp-sourcemaps": "^2.6.4",
         "gulp-typescript": "^5.0.0-alpha.3",
         "gulp-uglify": "^3.0.0",
+        "gulp-htmlmin": "^4.0.0",
         "minify-html": "0.0.2",
         "tsify": "^4.0.0",
         "typescript": "^2.9.2",
