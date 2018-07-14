@@ -17,6 +17,10 @@ body {
     cursor: url(./assets/cursor.png) 0 0, auto;
 }
 
+.animated {
+    transition: all .4s ease-out;
+}
+
 @keyframes slow-appearing {
     0% { opacity: 0; }
     20% { opacity: 0; }
@@ -94,14 +98,46 @@ footer {
 
 
     #footer-content {
-        margin: 30px;
-        width: 50px;
+        margin: 0 10px 10px 0;
+        width: 60px;
         text-align: right;
-    }
-    #footer-content .fa {
-        color: white;
-        font-size: 300%;
-        margin-top: 20px;
+
+        .footer-icon-container {
+
+            width: 60px;
+            height: 60px;
+            position: relative;
+            text-align: center;
+            margin-top: 10px;
+
+            .footer-icon-circle {
+                width: 100%;
+                height: 100%;
+                background-color: #ffffff44;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+                transform: scale(0);
+                z-index: -2;
+            }
+
+            &:hover .footer-icon-circle {
+                transform: scale(1);
+            }
+
+            .footer-icon-link {
+                width: 100%;
+                height: 100%;
+            }
+
+            .fa {
+                color: #fff;
+                margin-top: 20%;
+                font-size: 200%;
+            }
+        }
+
     }
 }
 

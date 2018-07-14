@@ -65,8 +65,10 @@ html
         footer
             div#footer-content
                 each item in data.footerLinks
-                    a(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
-                        i(class='fa fa-white ' + item.icon)
+                    div(class='footer-icon-container')
+                        a(class='footer-icon-link', title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
+                            i(class='fa fa-white ' + item.icon)
+                        div(class='footer-icon-circle animated')
 
         div#animation-container
             p#fps-info
