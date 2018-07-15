@@ -104,6 +104,8 @@ footer {
 
         .separator {
             width: 60%;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .footer-icon-container {
@@ -151,20 +153,28 @@ footer {
     }
 }
 
-@media screen and (max-width: 745px){
+@media screen and (max-width: 745px) {
     #page-title > h1 {
-        font-size: 120%;
-        margin-bottom: 5px;
+        font-size: 120% !important;
+        margin-bottom: 5px !important;
     }
 
     #page-title > p.subtitle {
-        margin-bottom: -25px;
-        font-size: 70%;
+        margin-bottom: -25px !important;
+        font-size: 70% !important;
     }
 }
 
 @media screen and (max-width: 360px){
-    #page-title {
-        font-size: 80%;
+    #page-title > h1 {
+        font-size: 90% !important;
+    }
+
+    #page-title > p.subtitle {
+        font-size: 50% !important;
+    }
+
+    #page-title > p.text {
+        font-size: 40% !important;
     }
 }
