@@ -17,6 +17,10 @@ body {
     cursor: url(./assets/cursor.png) 0 0, auto;
 }
 
+.video-container {
+    display: none;
+}
+
 .animated {
     transition: all .4s ease-out;
 }

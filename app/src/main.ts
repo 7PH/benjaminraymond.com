@@ -1,7 +1,8 @@
-import {Stage} from "./engine/Stage";
-import {NodeContainer} from "./nodes/NodeContainer";
+import {Stage} from "./animation/engine/Stage";
+import {NodeContainer} from "./animation/nodes/NodeContainer";
+import AudioHandler from "./audio/AudioHandler";
 
-function init() {
+window.onload = () => {
     const stage: Stage = new Stage('animation-canvas');
 
     let nodeContainer = new NodeContainer(stage);
@@ -17,6 +18,8 @@ function init() {
             return;
         el.innerHTML = Math.floor(fps).toString();
     }, 100);
-}
 
-window.onload = init;
+    AudioHandler.init('assets/crossfire.webm');
+};
+
+document.addEventListener('click', async () => AudioHandler.play());
