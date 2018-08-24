@@ -12,7 +12,7 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": { },
+    "dependencies": {},
     "devDependencies": {
         "@types/node": "^10.5.2",
         "@types/pixi.js": "^4.8.0",

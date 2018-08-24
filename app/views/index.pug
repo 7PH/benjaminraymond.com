@@ -1,5 +1,6 @@
 -
     const data = {
+        googleAnalyticsId: 'UA-113541070-1',
         pageFavicon: {
             href: 'assets/favicon.png',
             type: 'image/png'
@@ -59,12 +60,12 @@ html
         script(src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js')
         script(src='https://use.fontawesome.com/0cebcc1cf0.js')
 
-        script(async, src='https://www.googletagmanager.com/gtag/js?id=UA-113541070-1')
+        script(async, src='https://www.googletagmanager.com/gtag/js?id=' + data.googleAnalyticsId)
         script
             | window.dataLayer = window.dataLayer || [];
             | function gtag(){dataLayer.push(arguments);}
             | gtag('js', new Date());
-            | gtag('config', 'UA-113541070-1');
+            | gtag('config', data.googleAnalyticsId);
     body
         div#page-content
             header
