@@ -65,7 +65,7 @@ html
             | window.dataLayer = window.dataLayer || [];
             | function gtag(){dataLayer.push(arguments);}
             | gtag('js', new Date());
-            | gtag('config', data.googleAnalyticsId);
+            | gtag('config', '#{data.googleAnalyticsId}');
     body
         div#page-content
             header
