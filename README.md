@@ -1,10 +1,8 @@
 # benjamin-raymond.pro
 
-Just my own landing page at https://benjamin-raymond.pro
+Just [my landing page](https://benjamin-raymond.pro)
 
-Feel free to copy, use as your own. Options (name, title, footer links) are easily changeable.
-
-**Please notify me if you do.**
+Please mention me if you use it for you c:
 
 The code in app/src/ was in javascript but switched to typescript recently.
 
