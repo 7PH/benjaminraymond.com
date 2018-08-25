@@ -1,5 +1,6 @@
 -
     const data = {
+        assetsVersion: 5,
         googleAnalyticsId: 'UA-113541070-1',
         pageFavicon: {
             href: 'assets/favicon.png',
@@ -55,7 +56,7 @@ html
 
         link(href='https://fonts.googleapis.com/css?family=Sacramento', rel='stylesheet')
         link(href='https://fonts.googleapis.com/css?family=Kalam', rel='stylesheet')
-        link(rel='stylesheet', href='styles.css')
+        link(rel='stylesheet', href='styles.css?' + data.assetsVersion)
 
         script(src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.1/pixi.min.js')
         script(src='https://use.fontawesome.com/0cebcc1cf0.js')
@@ -68,32 +69,36 @@ html
             | gtag('config', '#{data.googleAnalyticsId}');
     body
 
+        div#page-preview
+            p click to play
+
         div#page-content
-            header
-                div#page-title.slow-appearing
-                    h1= data.name
-                    p.subtitle= data.title
-                    p.text: a(href=data.cvLink, target='_blank', rel='nofollow')= data.cvLinkTitle
+            div#page-titles
+                header
+                    div#page-title.slow-appearing
+                        h1= data.name
+                        p.subtitle= data.title
+                        p.text: a(href=data.cvLink, target='_blank', rel='nofollow')= data.cvLinkTitle
 
-        footer
-            div#footer-content
-                each item in data.footerLinks
-                    if item.type === 'separator'
-                        hr.separator
-                    else
-                        div.footer-icon-container
-                            a.footer-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
-                                if item.icon
-                                    i(class='fa fa-white ' + item.icon)
-                                else
-                                    img.footer-icon-img(src=item.img)
-                            div.footer-icon-circle.animated
+            footer
+                div#footer-content
+                    each item in data.footerLinks
+                        if item.type === 'separator'
+                            hr.separator
+                        else
+                            div.footer-icon-container
+                                a.footer-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
+                                    if item.icon
+                                        i(class='fa fa-white ' + item.icon)
+                                    else
+                                        img.footer-icon-img(src=item.img)
+                                div.footer-icon-circle.animated
 
-        div#animation-container
-            p#fps-info
-                span#fps 0
-                | fps
-            div#animation-canvas
+            div#animation-container
+                p#fps-info
+                    span#fps 0
+                    | fps
+                div#animation-canvas
 
 
-        script(src='bundle.js?3')
+        script(src='bundle.js?' + data.assetsVersion)

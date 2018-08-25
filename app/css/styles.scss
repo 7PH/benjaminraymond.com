@@ -58,7 +58,25 @@ body {
     }
 }
 
+#page-preview {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#page-preview > p {
+    margin: 0;
+    padding-top: 30%;
+    top: 45%;
+    font-family: 'Kalam';
+    font-size: 170%;
+}
+
 #page-content {
+    display: none;
+}
+
+#page-titles {
     z-index: 1000;
     position: fixed;
     top: 0;
