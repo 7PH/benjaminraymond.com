@@ -79,7 +79,7 @@ export class DisplayObject extends PIXI.Container {
         this.velocity.y += delta * this.acceleration.y;
 
         // position
-        const coef: number = Math.max(0.05, AudioHandler.average);
+        const coef: number = Math.max(0.1, AudioHandler.average);
         this.position.x += delta * this.velocity.x * coef;
         this.position.y += delta * this.velocity.y * coef;
     }

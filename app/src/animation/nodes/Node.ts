@@ -1,4 +1,5 @@
 import {DisplayObject} from "../engine/DisplayObject";
+import AudioHandler from "../../audio/AudioHandler";
 
 
 export class Node extends DisplayObject {
@@ -15,10 +16,17 @@ export class Node extends DisplayObject {
     }
 
     redraw() {
+
         if (typeof this.graphics === 'undefined')
             return;
+
+        // chose color
+        let avg: number = Math.min(8, AudioHandler.average) / 8;
+        let value: number = avg * 0xFF | 0;
+        let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
+
         this.graphics.clear();
-        this.graphics.beginFill(this.color);
+        this.graphics.beginFill(AudioHandler.average > 8 ? this.color : grayscale);
         this.graphics.drawCircle(0, 0, this.radius);
         this.graphics.endFill();
     }

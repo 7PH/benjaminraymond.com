@@ -2,9 +2,9 @@
 
 export default class AudioHandler {
 
-    static readonly FFT_SIZE: number = 64;
+    static readonly FFT_SIZE: number = 128;
 
-    static readonly STATS_UPDATE_INTERVAL: number = 50;
+    static readonly STATS_UPDATE_INTERVAL: number = 1000 / 30;
 
     static context: AudioContext;
 
@@ -61,7 +61,7 @@ export default class AudioHandler {
 
         const newAverage = this.waveform.reduce((prev, curr) => prev + Math.abs(curr), 0);
 
-        this.average += (newAverage - this.average) * 1;
+        this.average += (newAverage - this.average) * 0.8;
     }
 
     /**
