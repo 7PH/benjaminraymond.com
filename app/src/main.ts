@@ -36,5 +36,5 @@ async function start() {
     }, 400);
 }
 
-AudioHandler.init('assets/sandblast.webm');
+AudioHandler.init('assets/crossfire.webm');
 document.addEventListener('click', start);
