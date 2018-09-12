@@ -7,7 +7,7 @@
     "scripts": {
         "clean": "rm -rf ./dist/*;",
         "build": "npm run clean; gulp;",
-        "deploy": "npm run build; scp -rp ./dist/bundle.js root@benjamin-raymond.pro:/hosts/www/b-raymond.com/public;"
+        "deploy": "npm run build; scp -rp ./dist/*.js root@benjamin-raymond.pro:/hosts/www/b-raymond.com/public;"
     },
     "keywords": [],
     "author": "",

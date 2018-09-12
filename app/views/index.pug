@@ -78,7 +78,7 @@ html
                     div#page-title.slow-appearing
                         h1= data.name
                         p.subtitle= data.title
-                        p.text: a(href=data.cvLink, target='_blank', rel='nofollow')= data.cvLinkTitle
+                        p.text: a(href=data.cvLink + '?' + data.assetsVersion, target='_blank', rel='nofollow')= data.cvLinkTitle
 
             footer
                 div#footer-content

@@ -44,8 +44,8 @@ gulp.task("typescript", function () {
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        // .pipe(uglify())
-        // .pipe(jsObfuscator())
+        .pipe(uglify())
+        .pipe(jsObfuscator())
         .pipe(gulp.dest("dist"));
 });
 

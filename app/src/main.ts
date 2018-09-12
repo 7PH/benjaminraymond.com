@@ -36,5 +36,9 @@ async function start() {
     }, 400);
 }
 
+let songs: string[] = [
+    'assets/crossfire.webm',
+    'assets/glitchmob.ogg'
+];
 AudioHandler.init('assets/crossfire.webm');
 document.addEventListener('click', start);
