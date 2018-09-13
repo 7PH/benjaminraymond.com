@@ -1,4 +1,5 @@
 import {DisplayObjectContainer} from "../engine/DisplayObjectContainer";
+import {Stage} from "../engine/Stage";
 import {Node} from "./Node";
 import {NodeLinker} from "./NodeLinker";
 
@@ -8,7 +9,7 @@ export class NodeContainer extends DisplayObjectContainer {
 
     public nodeLinker: NodeLinker;
 
-    constructor (stage) {
+    constructor (stage: Stage) {
         super(stage);
 
         this.nodes = new DisplayObjectContainer(this.stage);
@@ -25,7 +26,7 @@ export class NodeContainer extends DisplayObjectContainer {
                 this.addNode(x + 12 * Math.random(), y + 12 * Math.random(), 0, 0);
     }
 
-    addNode (x, y, vx, vy) {
+    addNode (x: number, y: number, vx: number, vy: number) {
         const node = new Node(this.stage);
         node.position.set(x, y);
         node.velocity.set(vx, vy);

@@ -1,9 +1,10 @@
 import {DisplayObject} from "./DisplayObject";
+import {Stage} from "./Stage";
 
 
 export class DisplayObjectContainer extends DisplayObject {
 
-    constructor (stage) {
+    constructor (stage: Stage | null) {
         super(stage, false);
 
     }

@@ -40,5 +40,5 @@ let songs: string[] = [
     'assets/crossfire.webm',
     'assets/glitchmob.ogg'
 ];
-AudioHandler.init('assets/crossfire.webm');
+AudioHandler.init(songs[0]);
 document.addEventListener('click', start);

@@ -1,5 +1,6 @@
 import {DisplayObject} from "../engine/DisplayObject";
 import AudioHandler from "../../audio/AudioHandler";
+import {Stage} from "../engine/Stage";
 
 
 export class Node extends DisplayObject {
@@ -8,7 +9,7 @@ export class Node extends DisplayObject {
 
     public radius: number = 2 + Math.random() * 4;
 
-    constructor (stage) {
+    constructor (stage: Stage) {
         super(stage);
 
         this.color = 0xFFFFFF * (Math.random()*.5 + .5);
@@ -31,7 +32,7 @@ export class Node extends DisplayObject {
         this.graphics.endFill();
     }
 
-    update(delta) {
+    update(delta: number) {
         super.update(delta);
 
         if (this.x < 0) this.x = this.stage.getWidth();

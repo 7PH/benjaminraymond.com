@@ -15,7 +15,7 @@ export class Stage extends DisplayObjectContainer {
 
     public lastUpdateDelta: number;
 
-    constructor (canvasID) {
+    constructor (canvasID: string) {
         super(null);
 
         this.canvasContainerID = canvasID;

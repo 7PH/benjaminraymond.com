@@ -1,6 +1,7 @@
 import {DisplayObject} from "../engine/DisplayObject";
 import {Point} from "../engine/Point";
 import {DisplayObjectContainer} from "../engine/DisplayObjectContainer";
+import {Stage} from "../engine/Stage";
 import {Node} from "./Node";
 
 
@@ -8,13 +9,13 @@ export class NodeLinker extends DisplayObject {
 
     private target: DisplayObjectContainer;
 
-    constructor (stage, nodes) {
+    constructor (stage: Stage, nodes: DisplayObjectContainer) {
         super(stage);
 
         this.target = nodes;
     }
 
-    update (delta) {
+    update (delta: number) {
         super.update(delta);
 
         if (typeof this.graphics === 'undefined')
@@ -29,7 +30,7 @@ export class NodeLinker extends DisplayObject {
 
             // pour tous les noeuds au dessus
             for (let k = i + 1, l = this.target.children.length; k < l; k++) {
-                const otherNode = this.target.children[k] as Node;
+                const otherNode: Node = this.target.children[k] as Node;
 
                 const dist = Point.distance(
                     node.position,
@@ -42,7 +43,7 @@ export class NodeLinker extends DisplayObject {
                     continue;
                 }
 
-                const a = Math.atan2(
+                const a: number = Math.atan2(
                     node.position.y - otherNode.position.y,
                     node.position.x - otherNode.position.x
                 );
