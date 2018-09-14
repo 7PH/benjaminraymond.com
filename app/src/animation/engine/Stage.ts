@@ -31,12 +31,14 @@ export class Stage extends DisplayObjectContainer {
 
         this.mouse = {};
         this.mouse.position = new PIXI.Point(0, 0);
-        this.on('mousemove', (e, v, t) => {
+        this.on('mousemove', (e: any) => {
             this.mouse.position.set(
                 e.data.global.x,
                 e.data.global.y
             );
         });
+
+        this.lastUpdateDelta = 0;
     }
 
     getWidth() {

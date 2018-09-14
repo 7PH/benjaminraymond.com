@@ -8,7 +8,7 @@ export default class AudioHandler {
 
     static context: AudioContext;
 
-    static analyser;
+    static analyser: AnalyserNode;
 
     static gain: GainNode;
 
@@ -27,7 +27,7 @@ export default class AudioHandler {
     static init(src: string) {
 
         // context
-        this.context = new (AudioContext || window['webkitAudioContext'])();
+        this.context = new (AudioContext || (<any>window)['webkitAudioContext'])();
 
         // gain
         this.gain = AudioHandler.context.createGain();
