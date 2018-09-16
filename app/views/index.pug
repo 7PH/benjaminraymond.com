@@ -1,7 +1,8 @@
 -
     const data = {
-        assetsVersion: 5,
+        assetsVersion: 6,
         googleAnalyticsId: 'UA-113541070-1',
+        music: 'Stephen - Crossfire',
         pageFavicon: {
             href: 'assets/favicon.png',
             type: 'image/png'
@@ -11,7 +12,7 @@
         title: 'Software Engineer',
         cvLinkTitle: 'See my CV',
         cvLink: 'assets/cv.pdf',
-        footerLinks: [
+        links: [
             {
                 title: 'Explore domaTeX',
                 href: 'https://domatex.fr',
@@ -80,19 +81,21 @@ html
                         p.subtitle= data.title
                         p.text: a(href=data.cvLink + '?' + data.assetsVersion, target='_blank', rel='nofollow')= data.cvLinkTitle
 
-            footer
-                div#footer-content
-                    each item in data.footerLinks
-                        if item.type === 'separator'
-                            hr.separator
-                        else
-                            div.footer-icon-container
-                                a.footer-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
-                                    if item.icon
-                                        i(class='fa fa-white ' + item.icon)
-                                    else
-                                        img.footer-icon-img(src=item.img)
-                                div.footer-icon-circle.animated
+            section#section-meta
+                p= `Music: “${data.music}”`
+
+            section#section-links
+                each item in data.links
+                    if item.type === 'separator'
+                        hr.separator
+                    else
+                        div.section-icon-container
+                            a.section-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
+                                if item.icon
+                                    i(class='fa fa-white ' + item.icon)
+                                else
+                                    img.section-icon-img(src=item.img)
+                            div.section-icon-circle.animated
 
             div#animation-container
                 p#fps-info
