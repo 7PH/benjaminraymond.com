@@ -14,9 +14,9 @@
     "license": "ISC",
     "dependencies": {},
     "devDependencies": {
-        "@types/node": "^10.10.3",
+        "@types/node": "^10.11.0",
         "@types/pixi.js": "^4.8.1",
-        "browserify": "^16.2.2",
+        "browserify": "^16.2.3",
         "gulp": "^4.0.0",
         "gulp-clean-css": "^3.10.0",
         "gulp-htmlmin": "^4.0.0",
