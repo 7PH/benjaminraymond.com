@@ -27,7 +27,7 @@ async function start() {
         if (el === null)
             return;
         el.innerHTML = Math.floor(fps).toString();
-    }, 100);
+    }, 1000);
 
     // start sound
     setTimeout(async () => {
