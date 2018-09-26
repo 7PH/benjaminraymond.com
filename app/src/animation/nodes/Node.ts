@@ -35,6 +35,11 @@ export class Node extends DisplayObject {
     update(delta: number) {
         super.update(delta);
 
+        // get coef according to the current music amplitude
+        const coef: number = Math.max(0.1, AudioHandler.average * 0.2);
+        this.position.x += delta * this.velocity.x * (coef - 1);
+        this.position.y += delta * this.velocity.y * (coef - 1);
+
         if (this.x < 0) this.x = this.stage.getWidth();
         else if (this.x > this.stage.getWidth()) this.x = 0;
 
