@@ -5,14 +5,11 @@ import {Stage} from "../engine/Stage";
 
 export class AnimatedBackground extends DisplayObject {
 
-    public color: number;
-
     public avg: number = 0;
 
     constructor (stage: Stage) {
         super(stage);
 
-        this.color = 0xFFFFFF * (Math.random()*.5 + .5);
         this.setFriction(1);
     }
 
