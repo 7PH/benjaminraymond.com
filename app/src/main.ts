@@ -1,6 +1,7 @@
 import {Stage} from "./animation/engine/Stage";
 import {NodeContainer} from "./animation/nodes/NodeContainer";
 import AudioHandler from "./audio/AudioHandler";
+import {AnimatedBackground} from "./animation/nodes/AnimatedBackground";
 
 async function start() {
 
@@ -18,6 +19,7 @@ async function start() {
     const nodeContainer: NodeContainer = new NodeContainer(stage);
     nodeContainer.populate();
     stage.addChild(nodeContainer);
+    stage.addChildAt(new AnimatedBackground(stage), 0);
     stage.run();
 
     // fps counter

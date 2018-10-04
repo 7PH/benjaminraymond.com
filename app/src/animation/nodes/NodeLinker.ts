@@ -18,12 +18,6 @@ export class NodeLinker extends DisplayObject {
     update (delta: number) {
         super.update(delta);
 
-        if (typeof this.graphics === 'undefined')
-            return;
-
-        this.graphics.clear();
-
-
         // pour tous les noeuds
         for (let i = 0, j = this.target.children.length; i < j; i++) {
             const node = this.target.children[i] as Node;
@@ -56,13 +50,6 @@ export class NodeLinker extends DisplayObject {
                 node.setForce('node_' + otherNode.id, new PIXI.Point(- fx, - fy));
                 otherNode.setForce('node_' + node.id, new PIXI.Point(fx, fy));
 
-                let c = Math.floor((255 * Math.exp(-dist * 0.03))).toString(16);
-                if (c.length == 1) c = '0' + c;
-                this.graphics.lineStyle(1,parseInt('0x' + c.repeat(3)));
-                this.graphics.beginFill(0x333333, 0.1);
-                this.graphics.moveTo(node.position.x, node.position.y);
-                this.graphics.lineTo(otherNode.position.x, otherNode.position.y);
-                this.graphics.endFill();
             }
         }
     }
