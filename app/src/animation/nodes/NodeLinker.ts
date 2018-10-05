@@ -15,15 +15,22 @@ export class NodeLinker extends DisplayObject {
         this.target = nodes;
     }
 
+    /**
+     * O(n^2)
+     * @TODO this can be optimized but it does seem to run correctly on most devices
+     * @param delta
+     */
     update (delta: number) {
         super.update(delta);
 
-        // pour tous les noeuds
-        for (let i = 0, j = this.target.children.length; i < j; i++) {
+        const N: number = this.target.children.length;
+
+        // foreach node
+        for (let i = 0; i < N; i++) {
             const node = this.target.children[i] as Node;
 
-            // pour tous les noeuds au dessus
-            for (let k = i + 1, l = this.target.children.length; k < l; k++) {
+            // foreach other node
+            for (let k = i + 1; k < N; k++) {
                 const otherNode: Node = this.target.children[k] as Node;
 
                 const dist = Point.distance(
@@ -49,7 +56,6 @@ export class NodeLinker extends DisplayObject {
 
                 node.setForce('node_' + otherNode.id, new PIXI.Point(- fx, - fy));
                 otherNode.setForce('node_' + node.id, new PIXI.Point(fx, fy));
-
             }
         }
     }

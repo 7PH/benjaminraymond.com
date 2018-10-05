@@ -5,7 +5,7 @@ import {Stage} from "../engine/Stage";
 
 export class AnimatedBackground extends DisplayObject {
 
-    public avg: number = 0;
+    public flattenedAverage: number = 0;
 
     constructor (stage: Stage) {
         super(stage);
@@ -19,7 +19,7 @@ export class AnimatedBackground extends DisplayObject {
             return;
 
         // chose color
-        let ratio: number = Math.min(50, this.avg) / 50;
+        let ratio: number = Math.min(50, this.flattenedAverage) / 50;
         let value: number = ratio * 0x11 | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
@@ -32,7 +32,7 @@ export class AnimatedBackground extends DisplayObject {
     update(delta: number) {
         super.update(delta);
 
-        this.avg += (AudioHandler.average - this.avg) * delta;
+        this.flattenedAverage += (AudioHandler.average - this.flattenedAverage) * delta;
 
         this.redraw();
     }
