@@ -1,6 +1,7 @@
 import {DisplayObject} from "../engine/DisplayObject";
 import AudioHandler from "../../audio/AudioHandler";
 import {Stage} from "../engine/Stage";
+import BlurFilter = PIXI.filters.BlurFilter;
 
 
 export class Node extends DisplayObject {
@@ -9,8 +10,13 @@ export class Node extends DisplayObject {
 
     public radius: number = 2 + Math.random() * 4;
 
+    public readonly filter: BlurFilter;
+
     constructor (stage: Stage) {
         super(stage);
+
+        this.filter = new PIXI.filters.BlurFilter();
+        this.filters = [this.filter];
 
         this.color = 0xFFFFFF * (Math.random()*.5 + .5);
         this.setFriction(1);
@@ -25,6 +31,8 @@ export class Node extends DisplayObject {
         let avg: number = Math.min(8, AudioHandler.average) / 8;
         let value: number = avg * 0xFF | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
+
+        this.filter.blur = 10 * Math.exp(- 0.2 * AudioHandler.average);
 
         this.graphics.clear();
         this.graphics.beginFill(AudioHandler.average > 8 ? this.color : grayscale);
