@@ -40,7 +40,12 @@ async function start() {
 
 let songs: string[] = [
     'assets/crossfire.webm',
-    'assets/glitchmob.ogg'
+    'assets/glitchmob.ogg',
+    'assets/liftmefromtheground.webm',
+    'assets/sandblast.webm'
 ];
-AudioHandler.init(songs[0]);
+
+let songIndex: number = parseInt(window.location.hash.replace('#', ''));
+console.log("Song index:", songIndex);
+AudioHandler.init(songs[songIndex] || songs[0]);
 document.addEventListener('click', start);
