@@ -5,7 +5,7 @@ import {AnimatedBackground} from "./animation/nodes/AnimatedBackground";
 import {AverageCircle} from "./animation/nodes/AverageCircle";
 import {DisplayObject} from "./animation/engine/DisplayObject";
 
-const DEBUG: boolean = document.location.hash === '#debug';
+export const DEBUG: boolean = document.location.hash === '#debug';
 console.log("DEBUG", DEBUG);
 
 async function start() {

@@ -18,7 +18,7 @@ export class AverageCircle extends DisplayObject {
     constructor(stage: Stage) {
         super(stage);
 
-        this.baseRadius = Math.min(stage.getWidth(), stage.getHeight()) / 8;
+        this.baseRadius = Math.min(stage.getWidth(), stage.getHeight()) / 12;
         this.radius = this.baseRadius;
 
         this.filter = new PIXI.filters.BlurFilter();
@@ -31,6 +31,11 @@ export class AverageCircle extends DisplayObject {
             return;
 
         this.graphics.clear();
+        // disk
+        this.graphics.beginFill(0xFFFFFF, 0.1);
+        this.graphics.drawCircle(0, 0, this.radius);
+        this.graphics.endFill();
+        // circle
         this.graphics.lineStyle(this.lineWidth, 0xFFFFFF);
         this.graphics.drawCircle(0, 0, this.radius);
     }
@@ -45,7 +50,7 @@ export class AverageCircle extends DisplayObject {
 
         this.lineWidth = 1 + this.flattenedAverage * 8;
         this.filter.blur = 1 + 10 * Math.exp(- 6 * this.flattenedAverage);
-        this.radius = this.baseRadius + 60 * this.flattenedAverage;
+        this.radius = this.baseRadius + 100 * this.flattenedAverage;
 
         this.redraw();
     }
