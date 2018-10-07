@@ -42,8 +42,9 @@ let songs: string[] = [
     'assets/crossfire.webm',
     'assets/glitchmob.ogg',
     'assets/liftmefromtheground.webm',
-    'assets/sandblast.webm'
-];
+    'assets/sandblast.webm',
+    'assets/odd-look.mp3'
+].map(path => 'https://benjamin-raymond.pro/' + path);
 
 let songIndex: number = parseInt(window.location.hash.replace('#', ''));
 console.log("Song index:", songIndex);
