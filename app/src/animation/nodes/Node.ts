@@ -10,13 +10,8 @@ export class Node extends DisplayObject {
 
     public radius: number = 2 + Math.random() * 4;
 
-    public readonly blurFilter: BlurFilter;
-
     constructor (stage: Stage) {
         super(stage);
-
-        this.blurFilter = new PIXI.filters.BlurFilter();
-        this.filters = [this.blurFilter];
 
         this.color = 0xFFFFFF * (Math.random()*.5 + .5);
         this.setFriction(1);
@@ -31,8 +26,6 @@ export class Node extends DisplayObject {
         let avg: number = 0.5 + Math.min(8, 64 * AudioHandler.average) / 16;
         let value: number = avg * 0xFF | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
-
-        this.blurFilter.blur = 0.5 + 10 * Math.exp(- 13 * AudioHandler.average);
 
         this.graphics.clear();
         this.graphics.beginFill(AudioHandler.average > 0.13 ? this.color : grayscale);

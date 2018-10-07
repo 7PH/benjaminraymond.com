@@ -2,6 +2,8 @@ import {DisplayObjectContainer} from "../engine/DisplayObjectContainer";
 import {Stage} from "../engine/Stage";
 import {Node} from "./Node";
 import {NodeLinker} from "./NodeLinker";
+import BlurFilter = PIXI.filters.BlurFilter;
+import AudioHandler from "../../audio/AudioHandler";
 
 /**
  *
@@ -10,10 +12,14 @@ export class NodeContainer extends DisplayObjectContainer {
 
     public nodes: DisplayObjectContainer;
 
+    public readonly blurFilter: BlurFilter;
+
     constructor (stage: Stage) {
         super(stage);
 
         this.nodes = new DisplayObjectContainer(this.stage);
+        this.blurFilter = new PIXI.filters.BlurFilter();
+        this.nodes.filters = [this.blurFilter];
         this.addChild(this.nodes);
         this.addChildAt(new NodeLinker(this.stage, this.nodes), 0);
 
@@ -40,5 +46,11 @@ export class NodeContainer extends DisplayObjectContainer {
         node.position.set(x, y);
         node.velocity.set(vx, vy);
         this.nodes.addChild(node);
+    }
+
+    public update(delta: number) {
+        super.update(delta);
+
+        this.blurFilter.blur = 0.5 + 10 * Math.exp(- 13 * AudioHandler.average);
     }
 }
