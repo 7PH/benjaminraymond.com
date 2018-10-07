@@ -58,8 +58,8 @@ export default class AudioHandler {
     static updateStats() {
 
         this.analyser.getFloatTimeDomainData(this.waveform);
-
-        this.average = this.waveform.reduce((prev, curr) => prev + Math.abs(curr), 0);
+        console.log(this.analyser.frequencyBinCount);
+        this.average = this.waveform.reduce((prev, curr) => prev + Math.abs(curr), 0) / this.analyser.frequencyBinCount;
     }
 
     /**

@@ -28,14 +28,14 @@ export class Node extends DisplayObject {
             return;
 
         // chose color
-        let avg: number = Math.min(8, AudioHandler.average) / 8;
+        let avg: number = Math.min(8, 64 * AudioHandler.average) / 8;
         let value: number = avg * 0xFF | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
-        this.filter.blur = 10 * Math.exp(- 0.2 * AudioHandler.average);
+        this.filter.blur = 10 * Math.exp(- 13 * AudioHandler.average);
 
         this.graphics.clear();
-        this.graphics.beginFill(AudioHandler.average > 8 ? this.color : grayscale);
+        this.graphics.beginFill(AudioHandler.average > 0.13 ? this.color : grayscale);
         this.graphics.drawCircle(0, 0, this.radius);
         this.graphics.endFill();
     }
@@ -44,7 +44,7 @@ export class Node extends DisplayObject {
         super.update(delta);
 
         // get coef according to the current music amplitude
-        const coef: number = Math.max(0.1, AudioHandler.average * 0.2);
+        const coef: number = Math.max(0.1, AudioHandler.average * 13);
         this.position.x += delta * this.velocity.x * (coef - 1);
         this.position.y += delta * this.velocity.y * (coef - 1);
 

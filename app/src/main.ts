@@ -2,6 +2,11 @@ import {Stage} from "./animation/engine/Stage";
 import {NodeContainer} from "./animation/nodes/NodeContainer";
 import AudioHandler from "./audio/AudioHandler";
 import {AnimatedBackground} from "./animation/nodes/AnimatedBackground";
+import {AverageCircle} from "./animation/nodes/AverageCircle";
+import {DisplayObject} from "./animation/engine/DisplayObject";
+
+const DEBUG: boolean = document.location.hash === '#debug';
+console.log("DEBUG", DEBUG);
 
 async function start() {
 
@@ -19,8 +24,17 @@ async function start() {
     const nodeContainer: NodeContainer = new NodeContainer(stage);
     nodeContainer.populate();
     stage.addChild(nodeContainer);
+
+    // average circle
+    const avgCircle: DisplayObject = new AverageCircle(stage);
+    avgCircle.position.x = stage.getWidth() / 2;
+    avgCircle.position.y = 6 * stage.getHeight() / 10;
+    stage.addChild(avgCircle);
+
     stage.addChildAt(new AnimatedBackground(stage), 0);
     stage.run();
+
+    console.log(stage);
 
     // fps counter
     setInterval(() => {
@@ -39,12 +53,13 @@ async function start() {
 }
 
 let songs: string[] = [
+    'assets/odd-look.mp3',
     'assets/crossfire.webm',
+    'assets/odd-look-original.mp3',
     'assets/glitchmob.ogg',
     'assets/liftmefromtheground.webm',
     'assets/sandblast.webm',
-    'assets/odd-look.mp3'
-].map(path => 'https://benjamin-raymond.pro/' + path);
+];
 
 let songIndex: number = parseInt(window.location.hash.replace('#', ''));
 console.log("Song index:", songIndex);

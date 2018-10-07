@@ -29,6 +29,16 @@ export class NodeLinker extends DisplayObject {
         for (let i = 0; i < N; i++) {
             const node = this.target.children[i] as Node;
 
+            const targetPosition: PIXI.Point = new PIXI.Point(
+                this.stage.getWidth() / 2,
+                6 * this.stage.getHeight() / 10
+            );
+            const angle: number = Math.atan2(node.position.y - targetPosition.y, node.position.x - targetPosition.x);
+            const dist = Point.distance(node.position, targetPosition);
+            const fx: number = - Math.cos(angle) * 100000 / dist;
+            const fy: number = - Math.sin(angle) * 100000 / dist;
+            node.setForce('tocenter', {x: fx, y: fy});
+
             // foreach other node
             for (let k = i + 1; k < N; k++) {
                 const otherNode: Node = this.target.children[k] as Node;
