@@ -48,6 +48,8 @@ async function start() {
 
         await AudioHandler.play();
     }, 400);
+
+    document.removeEventListener('click', start);
 }
 
 let songs: string[] = [
