@@ -20,7 +20,7 @@ export class AnimatedBackground extends DisplayObject {
 
         // chose color
         let ratio: number = Math.min(50, 64 * this.flattenedAverage) / 50;
-        let value: number = ratio * 0x11 | 0;
+        let value: number = ratio * 0x22 | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
         this.graphics.clear();
@@ -32,7 +32,10 @@ export class AnimatedBackground extends DisplayObject {
     update(delta: number) {
         super.update(delta);
 
-        this.flattenedAverage += (AudioHandler.average - this.flattenedAverage) * delta;
+        if (AudioHandler.average > this.flattenedAverage)
+            this.flattenedAverage = AudioHandler.average;
+        else
+            this.flattenedAverage -= 0.1 * delta;
 
         this.redraw();
     }

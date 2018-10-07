@@ -32,7 +32,7 @@ export class Node extends DisplayObject {
         let value: number = avg * 0xFF | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
-        this.filter.blur = 10 * Math.exp(- 13 * AudioHandler.average);
+        this.filter.blur = 0.5 + 10 * Math.exp(- 13 * AudioHandler.average);
 
         this.graphics.clear();
         this.graphics.beginFill(AudioHandler.average > 0.13 ? this.color : grayscale);
