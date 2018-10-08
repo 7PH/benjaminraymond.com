@@ -51,7 +51,7 @@ export class AverageCircle extends DisplayObject {
             const point = points[i];
             this.graphics.lineTo(point.x, point.y);
         }
-        this.graphics.lineTo(points[0].x, points[0].y);
+        this.graphics.closePath();
 
         // disk
         this.graphics.beginFill(0x111111, 1);
