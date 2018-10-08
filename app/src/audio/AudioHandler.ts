@@ -89,7 +89,7 @@ export default class AudioHandler {
      */
     static updateStats() {
 
-        const delta: number = Date.now() - this.lastUpdateDelta;
+        const delta: number = (Date.now() - this.lastUpdateDelta) / 1000;
 
         this.analyser.getFloatTimeDomainData(this.waveform);
         this.average = this.waveform.reduce((prev, curr) => prev + Math.abs(curr), 0) / this.analyser.frequencyBinCount;

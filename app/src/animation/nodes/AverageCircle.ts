@@ -8,8 +8,6 @@ export class AverageCircle extends DisplayObject {
 
     public lineWidth: number = 1;
 
-    public flattenedAverage: number = 0;
-
     public baseRadius: number;
 
     public radius: number;
@@ -65,32 +63,20 @@ export class AverageCircle extends DisplayObject {
         this.graphics.drawCircle(0, 0, this.radius);
 
         // eyes
-        if (DEBUG) {
-            let eyeW: number = 12;
-            let eyesY: number = -this.radius * 0.2;
-            let mouthW: number = 22;
-            let mouthY: number = this.radius * 0.1;
-            this.graphics.lineStyle(1, 0xFFFFFF);
-            this.graphics.moveTo(-this.radius * 0.4, eyesY);
-            this.graphics.lineTo(-this.radius * 0.4 + eyeW, eyesY);
-            this.graphics.moveTo(0, eyesY);
-            this.graphics.lineTo(eyeW, eyesY);
-            this.graphics.moveTo(-this.radius * 0.2, mouthY);
-            this.graphics.lineTo(-this.radius * 0.2 + mouthW, mouthY);
-        }
+        let eyesSize: number = this.radius * 0.1;
+        let eyesY: number = -this.radius * 0.3;
+        this.graphics.lineStyle(1, 0xFFFFFF);
+        this.graphics.beginFill(0xFFFFFF, 1);
+        this.graphics.drawRect(- eyesSize, eyesY, eyesSize, eyesSize);
+        this.graphics.drawRect(this.radius * 0.3, eyesY, eyesSize, eyesSize);
     }
 
     update(delta: number) {
         super.update(delta);
 
-        if (AudioHandler.average > this.flattenedAverage)
-            this.flattenedAverage += 1.00 * delta;
-        else
-            this.flattenedAverage -= 1.00 * delta;
-
-        this.lineWidth = 1 + this.flattenedAverage * 8;
-        this.filter.blur = 1 + 10 * Math.exp(- 6 * this.flattenedAverage);
-        this.radius = this.baseRadius + 100 * this.flattenedAverage;
+        this.lineWidth = 1 + AudioHandler.linearAverage * 8;
+        this.filter.blur = 1 + 10 * Math.exp(- 6 * AudioHandler.linearAverage);
+        this.radius = this.baseRadius + 100 * AudioHandler.linearAverage;
 
         this.redraw();
     }
