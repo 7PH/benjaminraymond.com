@@ -59,6 +59,7 @@ let songs: string[] = [
     'assets/glitchmob.ogg?1',
     'assets/liftmefromtheground.webm',
     'assets/sandblast.webm',
+    'assets/nowidontcare.mp3',
 ];
 
 let songIndex: number = parseInt(window.location.hash.replace('#', ''));
