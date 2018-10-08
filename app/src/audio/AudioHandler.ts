@@ -2,7 +2,7 @@
 
 export default class AudioHandler {
 
-    static readonly FFT_SIZE: number = 128;
+    static readonly FFT_SIZE: number = 256;
 
     static readonly STATS_UPDATE_INTERVAL: number = 1000 / 30;
 

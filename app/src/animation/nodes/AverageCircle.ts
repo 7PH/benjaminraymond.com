@@ -2,6 +2,7 @@ import {DisplayObject} from "../engine/DisplayObject";
 import AudioHandler from "../../audio/AudioHandler";
 import {Stage} from "../engine/Stage";
 import BlurFilter = PIXI.filters.BlurFilter;
+import {DEBUG} from "../../main";
 
 export class AverageCircle extends DisplayObject {
 
@@ -31,8 +32,29 @@ export class AverageCircle extends DisplayObject {
             return;
 
         this.graphics.clear();
+
+        const wave: Float32Array = AudioHandler.waveform;
+        const pixelsPerUnit: number = 40;
+        let points: {x: number, y: number}[] = [];
+        for (let i: number = 0, angle: number = Math.PI / 2; i < wave.length; ++ i, angle += Math.PI / wave.length) {
+            const x: number = Math.cos(angle) * (this.radius + pixelsPerUnit * wave[i]);
+            const y: number = Math.sin(angle) * (this.radius + pixelsPerUnit * wave[i]);
+            points.push({x, y});
+        }
+        let n: number = points.length;
+        for (let i: number = n - 1; i >= 0; -- i)
+            points.push({x: - points[i].x, y: points[i].y})
+
+        this.graphics.lineStyle(this.lineWidth, 0xFFFFFF);
+        this.graphics.moveTo(points[0].x, points[0].y);
+        for (let i: number = 0; i < points.length; ++ i) {
+            const point = points[i];
+            this.graphics.lineTo(point.x, point.y);
+        }
+        this.graphics.lineTo(points[0].x, points[0].y);
+
         // disk
-        this.graphics.beginFill(0xFFFFFF, 0.1);
+        this.graphics.beginFill(0x111111, 1);
         this.graphics.drawCircle(0, 0, this.radius);
         this.graphics.endFill();
         // circle
@@ -44,7 +66,7 @@ export class AverageCircle extends DisplayObject {
         super.update(delta);
 
         if (AudioHandler.average > this.flattenedAverage)
-            this.flattenedAverage = AudioHandler.average;
+            this.flattenedAverage += 1.00 * delta;
         else
             this.flattenedAverage -= 1.00 * delta;
 

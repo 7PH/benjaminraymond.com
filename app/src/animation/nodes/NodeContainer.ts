@@ -51,6 +51,6 @@ export class NodeContainer extends DisplayObjectContainer {
     public update(delta: number) {
         super.update(delta);
 
-        this.blurFilter.blur = 0.5 + 10 * Math.exp(- 13 * AudioHandler.average);
+        this.blurFilter.blur = 10 * Math.exp(- 13 * AudioHandler.average);
     }
 }
