@@ -20,7 +20,7 @@ export class AnimatedBackground extends DisplayObject {
 
         // chose color
         let ratio: number = Math.min(50, 64 * this.flattenedAverage) / 50;
-        let value: number = ratio * 0x22 | 0;
+        let value: number = ratio * 0x11 | 0;
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
         this.graphics.clear();
