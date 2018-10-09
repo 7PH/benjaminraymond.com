@@ -1,3 +1,4 @@
+import Timer = NodeJS.Timer;
 
 
 export default class AudioHandler {
@@ -50,6 +51,7 @@ export default class AudioHandler {
     static isPlaying: boolean;
 
     private static lastUpdateDelta: number = 0;
+    private static updateStatsInterval: Timer;
 
     /**
      *
@@ -81,7 +83,7 @@ export default class AudioHandler {
         this.analyser.getFloatTimeDomainData(this.waveform);
 
         this.lastUpdateDelta = Date.now();
-        setInterval(() => this.updateStats(), AudioHandler.STATS_UPDATE_INTERVAL);
+        this.updateStatsInterval = setInterval(() => this.updateStats(), AudioHandler.STATS_UPDATE_INTERVAL);
     }
 
     /**
@@ -112,5 +114,16 @@ export default class AudioHandler {
         this.isPlaying = true;
 
         this.updateStats();
+    }
+
+    /**
+     *
+     */
+    static async restart(newSrc: string) {
+        this.song.pause();
+        this.lastUpdateDelta = 0;
+        clearInterval(this.updateStatsInterval);
+        this.init(newSrc);
+        await this.play();
     }
 }

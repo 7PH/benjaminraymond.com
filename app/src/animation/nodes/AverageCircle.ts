@@ -75,7 +75,7 @@ export class AverageCircle extends DisplayObject {
         super.update(delta);
 
         this.lineWidth = 1 + AudioHandler.linearAverage * 8;
-        this.filter.blur = 1 + 10 * Math.exp(- 6 * AudioHandler.linearAverage);
+        this.filter.blur = 0.2 + 10 * Math.exp(- 10 * AudioHandler.linearAverage);
         this.radius = this.baseRadius + 100 * AudioHandler.linearAverage;
 
         this.redraw();

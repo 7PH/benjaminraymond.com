@@ -28,7 +28,7 @@ export class Node extends DisplayObject {
         let grayscale: number = parseInt('0x' + ((value << 16) | (value << 8) | value).toString(16), 16);
 
         this.graphics.clear();
-        this.graphics.beginFill(AudioHandler.average > 0.13 ? this.color : grayscale);
+        this.graphics.beginFill(AudioHandler.average > 0.15 ? this.color : grayscale);
         this.graphics.drawCircle(0, 0, this.radius);
         this.graphics.endFill();
     }

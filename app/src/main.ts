@@ -10,6 +10,8 @@ console.log("DEBUG", DEBUG);
 
 async function start() {
 
+    AudioHandler.init(getMusicPath());
+
     let pagePreview: HTMLElement | null = document.getElementById('page-preview');
     let pageContent: HTMLElement | null = document.getElementById('page-content');
 
@@ -44,24 +46,14 @@ async function start() {
     }, 1000);
 
     // start sound
-    setTimeout(async () => {
-
-        await AudioHandler.play();
-    }, 400);
+    await AudioHandler.play();
 
     document.removeEventListener('click', start);
 }
 
-let songs: string[] = [
-    'assets/crossfire.webm',
-    'assets/odd-look.mp3',
-    'assets/odd-look-original.mp3',
-    'assets/glitchmob.ogg?1',
-    'assets/liftmefromtheground.webm',
-    'assets/sandblast.webm',
-    'assets/nowidontcare.mp3',
-];
+function getMusicPath() {
+    return (document.getElementById('music-select') as any).value;
+}
 
-let songIndex: number = parseInt(window.location.hash.replace('#', ''));
-AudioHandler.init(songs[songIndex] || songs[0]);
 document.addEventListener('click', start);
+

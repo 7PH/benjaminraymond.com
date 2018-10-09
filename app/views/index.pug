@@ -44,6 +44,36 @@
                 rel: 'follow',
                 target: '_self'
             }
+        ],
+        "musics": [
+            {
+                title: 'Stephen - Crossfire',
+                path: 'assets/crossfire.webm'
+            },
+            {
+                title: 'Kavinsky - Odd Look (Remix)',
+                path: 'assets/odd-look.mp3'
+            },
+            {
+                title: 'Kavinsky - Odd Look',
+                path: 'assets/odd-look-original.mp3'
+            },
+            {
+                title: 'GlitchMob - Animus Vox',
+                path: 'assets/glitchmob.ogg'
+            },
+            {
+                title: 'San Holo - Lift Me From The Ground',
+                path: 'assets/liftmefromtheground.webm'
+            },
+            {
+                title: 'Fox Stevenson - Sandblast',
+                path: 'assets/sandblast.webm'
+            },
+            {
+                title: 'Unlike Pluto - Now I Don\'t Care',
+                path: 'assets/nowidontcare.mp3'
+            }
         ]
     }
 
@@ -82,7 +112,10 @@ html
                         p.text: a(href=data.cvLink + '?' + data.assetsVersion, target='_blank', rel='nofollow')= data.cvLinkTitle
 
             section#section-meta
-                p= `Music: “${data.music}”`
+                // p= `Music: “${data.music}”`
+                select#music-select
+                    each item in data.musics
+                        option(value=item.path)= item.title
 
             section#section-links
                 each item in data.links
