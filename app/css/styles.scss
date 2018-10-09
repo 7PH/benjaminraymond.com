@@ -126,8 +126,11 @@ header {
     left: 0;
     z-index: 1000;
 
-    p {
-        margin: 10px;
+    select {
+        margin: 8px;
+        padding: 4px;
+        background-color: #111111;
+        color: white;
         font-family: 'Kalam';
     }
 }
