@@ -55,5 +55,14 @@ function getMusicPath() {
     return (document.getElementById('music-select') as any).value;
 }
 
+async function restart() {
+    AudioHandler.song.pause();
+    AudioHandler.song.currentTime = 0;
+    AudioHandler.init(getMusicPath());
+    await AudioHandler.play();
+}
+
 document.addEventListener('click', start);
 
+const musicSelect: HTMLSelectElement = document.getElementById('music-select') as HTMLSelectElement;
+musicSelect.addEventListener('click', () => restart());

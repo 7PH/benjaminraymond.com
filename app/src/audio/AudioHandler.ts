@@ -115,15 +115,4 @@ export default class AudioHandler {
 
         this.updateStats();
     }
-
-    /**
-     *
-     */
-    static async restart(newSrc: string) {
-        this.song.pause();
-        this.lastUpdateDelta = 0;
-        clearInterval(this.updateStatsInterval);
-        this.init(newSrc);
-        await this.play();
-    }
 }
