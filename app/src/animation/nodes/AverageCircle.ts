@@ -32,11 +32,12 @@ export class AverageCircle extends DisplayObject {
         this.graphics.clear();
 
         // draw waveform
-        const wave: Float32Array = AudioHandler.waveform;
+        const wave: Float32Array = AudioHandler.firstOrderWaveform;
+        const waveAverage: number = wave.reduce((acc, v) => acc + v, 0) / wave.length;
         const maxAmplitude: number = 100; // in pixels
         let points: {x: number, y: number}[] = [];
         for (let i: number = 0, angle: number = Math.PI / 2; i < wave.length; ++ i, angle += Math.PI / wave.length) {
-            const amplitude: number = Math.max(0, wave[i] - AudioHandler.average);
+            const amplitude: number = Math.max(0, wave[i] - waveAverage);
             const x: number = Math.cos(angle) * (this.radius + maxAmplitude * amplitude);
             const y: number = Math.sin(angle) * (this.radius + maxAmplitude * amplitude);
             points.push({x, y});

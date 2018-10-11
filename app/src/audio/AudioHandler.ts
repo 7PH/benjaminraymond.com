@@ -3,9 +3,9 @@ import Timer = NodeJS.Timer;
 
 export default class AudioHandler {
 
-    static readonly FFT_SIZE: number = 128;
+    static readonly FFT_SIZE: number = 256;
 
-    static readonly STATS_UPDATE_INTERVAL: number = 1000 / 30;
+    static readonly STATS_UPDATE_INTERVAL: number = 1000 / 40;
 
     static context: AudioContext;
 
@@ -19,6 +19,11 @@ export default class AudioHandler {
      * Current waveform
      */
     static waveform: Float32Array;
+
+    /**
+     * Interpolated waveform
+     */
+    static firstOrderWaveform: Float32Array;
 
     /**
      * Current average
@@ -80,6 +85,7 @@ export default class AudioHandler {
         this.gain.connect(this.analyser);
         this.analyser.fftSize = AudioHandler.FFT_SIZE;
         this.waveform = new Float32Array(this.analyser.frequencyBinCount);
+        this.firstOrderWaveform = new Float32Array(this.analyser.frequencyBinCount);
         this.analyser.getFloatTimeDomainData(this.waveform);
 
         this.lastUpdateDelta = Date.now();
@@ -99,6 +105,12 @@ export default class AudioHandler {
         this.maximum = this.waveform.reduce((a, b) => Math.max(a, b), this.waveform[0]);
         this.firstOrderAverage += (this.average - this.firstOrderAverage) * 0.5 * delta;
         this.linearAverage += delta * (this.average > this.linearAverage ? 1 : -1);
+        this.waveform.forEach((value, index) => {
+            if (value > this.firstOrderWaveform[index])
+                this.firstOrderWaveform[index] = value;
+            else
+                this.firstOrderWaveform[index] += (value - this.firstOrderWaveform[index]) * 1.1 * delta;
+        });
 
         this.lastUpdateDelta = Date.now();
     }
