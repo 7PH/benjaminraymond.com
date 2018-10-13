@@ -66,8 +66,8 @@ export class AverageCircle extends DisplayObject {
         this.graphics.drawCircle(0, 0, this.radius);
 
         // eyes
-        // 1 blink of 100ms every 4s
-        this.eyesClosed = Math.floor(10 * Date.now() / 1000) % 40 == 0;
+        // 1 blink of 100ms every 3s
+        this.eyesClosed = Math.floor(10 * Date.now() / 1000) % 30 == 0;
         let eyesSize: number;
         if (this.eyesClosed) {
             eyesSize = this.radius * 0.02;
