@@ -1,8 +1,7 @@
 -
     const data = {
-        assetsVersion: 25,
+        assetsVersion: 26,
         googleAnalyticsId: 'UA-113541070-1',
-        music: 'Stephen - Crossfire',
         pageFavicon: {
             href: 'assets/favicon.png',
             type: 'image/png'
@@ -112,7 +111,6 @@ html
                         p.text: a(href=data.cvLink + '?' + data.assetsVersion, target='_blank', rel='nofollow')= data.cvLinkTitle
 
             section#section-meta
-                // p= `Music: “${data.music}”`
                 select#music-select
                     each item in data.musics
                         option(value=item.path)= item.title
