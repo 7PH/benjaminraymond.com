@@ -12,6 +12,8 @@ export class AverageCircle extends DisplayObject {
 
     public radius: number;
 
+    public eyesClosed: boolean = false;
+
     public readonly filter: BlurFilter;
 
     constructor(stage: Stage) {
@@ -64,12 +66,20 @@ export class AverageCircle extends DisplayObject {
         this.graphics.drawCircle(0, 0, this.radius);
 
         // eyes
-        let eyesSize: number = this.radius * 0.1;
+        // 1 blink of 100ms every 4s
+        this.eyesClosed = Math.floor(10 * Date.now() / 1000) % 40 == 0;
+        let eyesSize: number;
+        if (this.eyesClosed) {
+            eyesSize = this.radius * 0.02;
+        } else {
+            // eyes open
+            eyesSize = this.radius * 0.1;
+        }
         let eyesY: number = -this.radius * 0.3;
         this.graphics.lineStyle(1, 0xFFFFFF);
         this.graphics.beginFill(0xFFFFFF, 1);
-        this.graphics.drawRect(- eyesSize, eyesY, eyesSize, eyesSize);
-        this.graphics.drawRect(this.radius * 0.3, eyesY, eyesSize, eyesSize);
+        this.graphics.drawRect(- eyesSize * 0.5, eyesY - eyesSize * 0.5, eyesSize, eyesSize);
+        this.graphics.drawRect(this.radius * 0.3 - eyesSize * 0.5, eyesY - eyesSize * 0.5, eyesSize, eyesSize);
     }
 
     update(delta: number) {
