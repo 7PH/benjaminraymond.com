@@ -1,6 +1,8 @@
 import {DisplayObjectContainer} from "./DisplayObjectContainer";
 
-
+/**
+ *
+ */
 export class Stage extends DisplayObjectContainer {
 
     public canvasContainerID: string;
@@ -11,12 +13,15 @@ export class Stage extends DisplayObjectContainer {
 
     public renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
 
-    public mouse: any;
-
     public lastUpdateDelta: number;
 
+    public readonly mouse: { position: PIXI.Point };
+
     constructor (canvasID: string) {
-        super(null);
+
+        // we want the stage typed as 'Stage'
+        //  even if it is null on the Stage itself.
+        super(null as any as Stage);
 
         this.canvasContainerID = canvasID;
         this.canvasContainer = document.getElementById(canvasID) as HTMLDivElement;
@@ -29,8 +34,9 @@ export class Stage extends DisplayObjectContainer {
         this.canvasContainer.appendChild(this.renderer.view);
         this.renderer.render(this);
 
-        this.mouse = {};
-        this.mouse.position = new PIXI.Point(0, 0);
+        this.mouse = {
+            position: new PIXI.Point(0, 0)
+        };
         this.on('mousemove', (e: any) => {
             this.mouse.position.set(
                 e.data.global.x,

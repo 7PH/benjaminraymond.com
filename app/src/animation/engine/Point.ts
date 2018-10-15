@@ -1,3 +1,7 @@
+
+/**
+ *
+ */
 export class Point {
 
     static distance (

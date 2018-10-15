@@ -4,7 +4,7 @@ import {Stage} from "./Stage";
 
 export class DisplayObjectContainer extends DisplayObject {
 
-    constructor (stage: Stage | null) {
+    constructor (stage: Stage) {
         super(stage, false);
 
     }

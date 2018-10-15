@@ -12,17 +12,17 @@ export class DisplayObject extends PIXI.Container {
     public velocity: PIXI.Point;
     public acceleration: PIXI.Point;
     public friction: PIXI.Point;
-    public forces: any;
+    public forces: {[forceId: string]: {x: number, y: number}};
     public mass: number;
 
-    constructor (stage: Stage | null, appendGraphics?: boolean) {
+    constructor (stage: Stage, appendGraphics?: boolean) {
         super();
         // params
         appendGraphics = typeof(appendGraphics) == 'undefined' ? true : appendGraphics;
 
-        // attributes
         this.id = DisplayObject.ID ++;
-        this.stage = stage as Stage;
+
+        this.stage = stage;
         this.graphics = undefined;
         this.velocity = new PIXI.Point(0, 0);
         this.acceleration = new PIXI.Point(0, 0);
@@ -38,7 +38,10 @@ export class DisplayObject extends PIXI.Container {
     }
 
     setForce (name: string, vector: PIXI.Point | {x: number , y: number}) {
-        this.forces[name] = vector;
+        this.forces[name] = {
+            x: vector.x,
+            y: vector.y
+        };
     }
 
     clearForce (name: string) {

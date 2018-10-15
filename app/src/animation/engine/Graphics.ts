@@ -1,5 +1,8 @@
 import {Stage} from "./Stage";
 
+/**
+ *
+ */
 export class Graphics extends PIXI.Graphics {
 
     private stage: Stage;

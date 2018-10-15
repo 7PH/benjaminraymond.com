@@ -55,9 +55,7 @@ function getMusicPath() {
     return (document.getElementById('music-select') as any).value;
 }
 
-async function restart(evt: MouseEvent) {
-    if (! (evt.target instanceof HTMLOptionElement))
-        return;
+async function restart(evt: Event) {
     AudioHandler.song.pause();
     AudioHandler.song.currentTime = 0;
     AudioHandler.init(getMusicPath());
@@ -67,4 +65,4 @@ async function restart(evt: MouseEvent) {
 document.addEventListener('click', start);
 
 const musicSelect: HTMLSelectElement = document.getElementById('music-select') as HTMLSelectElement;
-musicSelect.addEventListener('click', evt => restart(evt));
+musicSelect.addEventListener('change', evt => restart(evt));
