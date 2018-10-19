@@ -8,21 +8,13 @@ import {DisplayObject} from "./animation/engine/DisplayObject";
 export const DEBUG: boolean = document.location.hash === '#debug';
 console.log("DEBUG", DEBUG);
 
-async function start() {
+let stage: Stage;
 
-    AudioHandler.init(getMusicPath());
+function rebuildStage() {
 
-    let pagePreview: HTMLElement | null = document.getElementById('page-preview');
-    let pageContent: HTMLElement | null = document.getElementById('page-content');
+    while (stage.children.length > 0)
+        stage.removeChildAt(0);
 
-    if (pagePreview === null || pageContent === null)
-        return alert("Error. Please try to refresh the page");
-
-    pagePreview.style.display = 'none';
-    pageContent.style.display = 'block';
-
-    // animation
-    const stage: Stage = new Stage('animation-canvas');
     const nodeContainer: NodeContainer = new NodeContainer(stage);
     nodeContainer.populate();
     stage.addChild(nodeContainer);
@@ -35,6 +27,25 @@ async function start() {
 
     stage.addChildAt(new AnimatedBackground(stage), 0);
     stage.run();
+}
+
+/**
+ * To run only once
+ */
+async function init() {
+
+    let pagePreview: HTMLElement | null = document.getElementById('page-preview');
+    let pageContent: HTMLElement | null = document.getElementById('page-content');
+
+    if (pagePreview === null || pageContent === null)
+        return alert("Error. Please try to refresh the page");
+
+    pagePreview.style.display = 'none';
+    pageContent.style.display = 'block';
+
+    // animation
+    stage = new Stage('animation-canvas');
+    rebuildStage();
 
     // fps counter
     setInterval(() => {
@@ -45,24 +56,30 @@ async function start() {
         el.innerHTML = Math.floor(fps).toString();
     }, 1000);
 
-    // start sound
-    await AudioHandler.play();
+    document.removeEventListener('click', init);
 
-    document.removeEventListener('click', start);
+    await restartSong();
 }
 
 function getMusicPath() {
     return (document.getElementById('music-select') as any).value;
 }
 
-async function restart(evt: Event) {
-    AudioHandler.song.pause();
-    AudioHandler.song.currentTime = 0;
+/**
+ *
+ */
+async function restartSong() {
+
+    if (typeof AudioHandler.song !== 'undefined') {
+        AudioHandler.song.pause();
+        AudioHandler.song.currentTime = 0;
+    }
+
     AudioHandler.init(getMusicPath());
     await AudioHandler.play();
 }
 
-document.addEventListener('click', start);
+document.addEventListener('click', init);
 
 const musicSelect: HTMLSelectElement = document.getElementById('music-select') as HTMLSelectElement;
-musicSelect.addEventListener('change', evt => restart(evt));
+musicSelect.addEventListener('change', () => restartSong());
