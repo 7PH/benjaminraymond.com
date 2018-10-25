@@ -34,18 +34,10 @@ function rebuildStage() {
  */
 async function init() {
 
-    let pagePreview: HTMLElement | null = document.getElementById('page-preview');
-    let pageContent: HTMLElement | null = document.getElementById('page-content');
-
+    let pagePreview: HTMLElement = <HTMLElement> document.getElementById('page-preview');
+    let pageContent: HTMLElement = <HTMLElement> document.getElementById('page-content');
     if (pagePreview === null || pageContent === null)
         return alert("Error. Please try to refresh the page");
-
-    pagePreview.style.display = 'none';
-    pageContent.style.display = 'block';
-
-    // animation
-    stage = new Stage('animation-canvas');
-    rebuildStage();
 
     // fps counter
     setInterval(() => {
@@ -56,9 +48,25 @@ async function init() {
         el.innerHTML = Math.floor(fps).toString();
     }, 1000);
 
+    // prevent multi clicks
     document.removeEventListener('click', init);
 
+    // start song
     await restartSong();
+
+    // 1 fade out the 'click to play' screen
+    pagePreview.classList.add('goaway');
+
+    setTimeout(async () => {
+
+        // 2 display the stuff behind
+        pageContent.style.display = 'block';
+
+        // animation
+        stage = new Stage('animation-canvas');
+        rebuildStage();
+
+    }, 2000);
 }
 
 function getMusicPath() {

@@ -1,6 +1,6 @@
 -
     const data = {
-        assetsVersion: 30,
+        assetsVersion: 31,
         googleAnalyticsId: 'UA-113541070-1',
         pageFavicon: {
             href: 'assets/favicon.jpeg',
@@ -98,10 +98,10 @@ html
         div#page-preview
             p click to play
 
-        div#page-content
+        div#page-content.slow-appearing
             div#page-titles
                 header
-                    div#page-title.slow-appearing
+                    div#page-title
                         h1= data.name
                         p.subtitle= data.title
                         p.text: a(href=data.cvLink + '?' + data.assetsVersion, target='_blank', rel='nofollow')= data.cvLinkTitle
