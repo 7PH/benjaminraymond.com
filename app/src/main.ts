@@ -20,9 +20,11 @@ function rebuildStage() {
     stage.addChild(nodeContainer);
 
     // average circle
-    const avgCircle: DisplayObject = new AverageCircle(stage);
-    avgCircle.position.x = stage.getWidth() / 2;
-    avgCircle.position.y = 6 * stage.getHeight() / 10;
+    const avgCircle: DisplayObject = new AverageCircle(
+        stage,
+        stage.getWidth() / 2,
+        6 * stage.getHeight() / 10
+    );
     stage.addChild(avgCircle);
 
     stage.addChildAt(new AnimatedBackground(stage), 0);
