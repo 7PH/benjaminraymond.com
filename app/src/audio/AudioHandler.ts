@@ -64,6 +64,7 @@ export default class AudioHandler {
      */
     static init(src: string) {
 
+    /*
         // context
         this.context = new (AudioContext || (<any>window)['webkitAudioContext'])();
 
@@ -90,13 +91,14 @@ export default class AudioHandler {
 
         this.lastUpdateDelta = Date.now();
         this.updateStatsInterval = setInterval(() => this.updateStats(), AudioHandler.STATS_UPDATE_INTERVAL);
+    */
     }
 
     /**
      * @TODO optimize. functional javascript gives bad performances
      */
     static updateStats() {
-
+        /*
         const delta: number = (Date.now() - this.lastUpdateDelta) / 1000;
 
         this.analyser.getFloatTimeDomainData(this.waveform);
@@ -113,6 +115,7 @@ export default class AudioHandler {
         });
 
         this.lastUpdateDelta = Date.now();
+        */
     }
 
     /**
@@ -120,11 +123,12 @@ export default class AudioHandler {
      * @returns {Promise<void>}
      */
     static async play() {
-
+        /*
         await this.song.play();
 
         this.isPlaying = true;
 
         this.updateStats();
+        */
     }
 }
