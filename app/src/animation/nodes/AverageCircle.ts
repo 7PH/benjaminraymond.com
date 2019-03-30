@@ -5,20 +5,47 @@ import BlurFilter = PIXI.filters.BlurFilter;
 
 export class AverageCircle extends DisplayObject {
 
+    /**
+     * Circle line width in pixels
+     */
     public lineWidth: number = 1;
 
+    /**
+     * Radius when no music is there in pixels
+     */
     public baseRadius: number;
 
+    /**
+     * Current radius in pixels
+     */
     public radius: number;
 
+    /**
+     * Whether the eyes are closed
+     */
     public eyesClosed: boolean = false;
 
+    /**
+     * Position where the circle should be (there is an interpolation)
+     */
     public targetPosition: PIXI.Point = new PIXI.Point(0, 0);
 
+    /**
+     * Timestamp of the last position update in ms
+     */
     public lastUpdatePosition: number = 0;
 
+    /**
+     * Circle filter
+     */
     public readonly filter: BlurFilter;
 
+    /**
+     *
+     * @param stage
+     * @param centerX
+     * @param centerY
+     */
     constructor(stage: Stage, private centerX: number, private centerY: number) {
         super(stage);
 
@@ -34,6 +61,10 @@ export class AverageCircle extends DisplayObject {
         this.position.y = centerY;
     }
 
+    /**
+     *
+     * @param delta
+     */
     public update(delta: number) {
         super.update(delta);
 
@@ -58,7 +89,7 @@ export class AverageCircle extends DisplayObject {
     }
 
     /**
-     *
+     * Interpolate this circle to the target position and update its radius
      */
     private updatePosition() {
 
@@ -71,6 +102,9 @@ export class AverageCircle extends DisplayObject {
         this.targetPosition.y = this.centerY + y;
     }
 
+    /**
+     * Redraw the circle
+     */
     private redraw() {
 
         if (typeof this.graphics === "undefined") {
