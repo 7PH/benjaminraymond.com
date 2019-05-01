@@ -71,8 +71,9 @@ async function init() {
     }, 2000);
 }
 
-function getMusicPath() {
-    return (document.getElementById('music-select') as any).value;
+function getMusicPath(): string | undefined {
+    const path: string = (document.getElementById('music-select') as any).value;
+    return path === "false" ? undefined : path;
 }
 
 /**
@@ -85,8 +86,13 @@ async function restartSong() {
         AudioHandler.song.currentTime = 0;
     }
 
-    AudioHandler.init(getMusicPath());
-    await AudioHandler.play();
+    const path = getMusicPath();
+    if (typeof path !== "undefined") {
+
+        // music changed
+        AudioHandler.init(path);
+        await AudioHandler.play();
+    }
 }
 
 document.addEventListener('click', init);
