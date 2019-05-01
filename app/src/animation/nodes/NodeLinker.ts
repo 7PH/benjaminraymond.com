@@ -39,7 +39,6 @@ export class NodeLinker extends DisplayObject {
 
             const node: Node = this.target.children[i] as Node;
             const distance: number = Point.distance(node.position, this.centerPosition);
-            console.log(distance);
             if (distance > this.stage.getWidth() / 10)
                 continue;
 
