@@ -4,6 +4,7 @@ import {DisplayObjectContainer} from "../engine/DisplayObjectContainer";
 import {Stage} from "../engine/Stage";
 import {Node} from "./Node";
 import AudioHandler from "../../audio/AudioHandler";
+import {NodeContainer} from "./NodeContainer";
 
 
 export class NodeLinker extends DisplayObject {
@@ -17,10 +18,7 @@ export class NodeLinker extends DisplayObject {
 
         this.target = nodes;
 
-        this.centerPosition = new PIXI.Point(
-            this.stage.getWidth() / 2,
-            6 * this.stage.getHeight() / 10
-        );
+        this.centerPosition = new PIXI.Point(0, 0);
     }
 
     /**
@@ -57,12 +55,18 @@ export class NodeLinker extends DisplayObject {
         super.update(delta);
 
         const N: number = this.target.children.length;
+        const nodeContainer: NodeContainer = this.parent as NodeContainer;
+        this.centerPosition.x = nodeContainer.circle.position.x;
+        this.centerPosition.y = nodeContainer.circle.position.y;
 
         // foreach node
         for (let i = 0; i < N; i++) {
             const node = this.target.children[i] as Node;
 
-            const angle: number = Math.atan2(node.position.y - this.centerPosition.y, node.position.x - this.centerPosition.x);
+            const angle: number = Math.atan2(
+                node.position.y - this.centerPosition.y,
+                node.position.x - this.centerPosition.x
+            );
             const dist = Point.distance(node.position, this.centerPosition);
             const fx: number = - Math.cos(angle) * 100000 / dist;
             const fy: number = - Math.sin(angle) * 100000 / dist;

@@ -33,7 +33,12 @@ export class AverageCircle extends DisplayObject {
     /**
      * Timestamp of the last position update in ms
      */
-    public lastUpdatePosition: number = 0;
+    public lastUpdateRandomAngle: number = 0;
+
+    /**
+     * Random angle
+     */
+    public randomAngle: number = 0;
 
     /**
      * Circle filter
@@ -74,15 +79,18 @@ export class AverageCircle extends DisplayObject {
         this.radius = this.baseRadius + 100 * AudioHandler.linearAverage;
 
         this.setForce("main", {
-            x: this.targetPosition.x - this.position.x,
-            y: this.targetPosition.y - this.position.y,
+            x: (this.targetPosition.x - this.position.x) * AudioHandler.firstOrderAverage * 16,
+            y: (this.targetPosition.y - this.position.y) * AudioHandler.firstOrderAverage * 16,
         });
 
         // update shift from center
-        if (Date.now() > 400 + this.lastUpdatePosition) {
-            this.updatePosition();
-            this.lastUpdatePosition = Date.now();
+        if (Date.now() > 400 + this.lastUpdateRandomAngle) {
+            this.randomAngle = Math.random() * 2 * Math.PI;
+            this.lastUpdateRandomAngle = Date.now();
         }
+
+        // get circle closer to target location
+        this.updatePosition();
 
         // redraw
         this.redraw();
@@ -93,13 +101,20 @@ export class AverageCircle extends DisplayObject {
      */
     private updatePosition() {
 
-        const angle: number = Math.random() * 2 * Math.PI;
         const radius: number = this.baseRadius * (.5 + AudioHandler.firstOrderAverage * .5);
-        const x: number = Math.cos(angle) * radius;
-        const y: number = Math.sin(angle) * radius;
+        const x: number = Math.cos(this.randomAngle) * radius;
+        const y: number = Math.sin(this.randomAngle) * radius;
 
-        this.targetPosition.x = this.centerX + x;
-        this.targetPosition.y = this.centerY + y;
+        const mousePos = this.stage.renderer.plugins.interaction.mouse.global;
+        const mouseAngle: number = Math.atan2(
+            mousePos.y - this.centerY,
+            mousePos.x - this.centerX
+        );
+        const mouseVectorX = Math.cos(mouseAngle) * radius;
+        const mouseVectorY = Math.sin(mouseAngle) * radius;
+
+        this.targetPosition.x = this.centerX + x + mouseVectorX;
+        this.targetPosition.y = this.centerY + y + mouseVectorY;
     }
 
     /**

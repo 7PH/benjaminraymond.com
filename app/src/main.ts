@@ -15,17 +15,17 @@ function rebuildStage() {
     while (stage.children.length > 0)
         stage.removeChildAt(0);
 
-    const nodeContainer: NodeContainer = new NodeContainer(stage);
-    nodeContainer.populate();
-    stage.addChild(nodeContainer);
-
     // average circle
-    const avgCircle: DisplayObject = new AverageCircle(
+    const avgCircle: AverageCircle = new AverageCircle(
         stage,
         stage.getWidth() / 2,
         6 * stage.getHeight() / 10
     );
     stage.addChild(avgCircle);
+
+    const nodeContainer: NodeContainer = new NodeContainer(stage, avgCircle);
+    nodeContainer.populate();
+    stage.addChildAt(nodeContainer, 0);
 
     stage.addChildAt(new AnimatedBackground(stage), 0);
     stage.run();

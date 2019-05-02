@@ -2,21 +2,25 @@ import {DisplayObjectContainer} from "../engine/DisplayObjectContainer";
 import {Stage} from "../engine/Stage";
 import {Node} from "./Node";
 import {NodeLinker} from "./NodeLinker";
+import {AverageCircle} from "./AverageCircle";
 
 /**
  *
  */
 export class NodeContainer extends DisplayObjectContainer {
 
-    public nodes: DisplayObjectContainer;
+    public readonly nodes: DisplayObjectContainer;
 
-    constructor (stage: Stage) {
+    public readonly circle: AverageCircle;
+
+    constructor (stage: Stage, circle: AverageCircle) {
         super(stage);
 
         this.nodes = new DisplayObjectContainer(this.stage);
         this.addChild(this.nodes);
         this.addChildAt(new NodeLinker(this.stage, this.nodes), 0);
 
+        this.circle = circle;
     }
 
     /**

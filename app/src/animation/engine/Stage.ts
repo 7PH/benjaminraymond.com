@@ -37,7 +37,7 @@ export class Stage extends DisplayObjectContainer {
         this.mouse = {
             position: new PIXI.Point(0, 0)
         };
-        this.on('mousemove', (e: any) => {
+        this.on('mousedown', (e: any) => {
             this.mouse.position.set(
                 e.data.global.x,
                 e.data.global.y
