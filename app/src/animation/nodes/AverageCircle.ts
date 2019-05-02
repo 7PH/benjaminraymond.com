@@ -136,7 +136,7 @@ export class AverageCircle extends DisplayObject {
         // first
         const points: Array<{x: number, y: number}> = [];
         const points2: Array<{x: number, y: number}> = [];
-        for (let i: number = 0, angle: number = Math.PI / 2; i < wave.length; ++ i, angle += Math.PI / wave.length) {
+        for (let i: number = 0, angle: number = Math.PI / 2 - 0.5 * Math.PI / wave.length; i < wave.length; ++ i, angle += Math.PI / wave.length) {
             const amplitude: number = Math.max(0, wave[i] - waveMinimum);
             const x: number = Math.cos(angle) * (this.radius + maxAmplitude * amplitude);
             const y: number = Math.sin(angle) * (this.radius + maxAmplitude * amplitude);

@@ -37,7 +37,7 @@ export class NodeLinker extends DisplayObject {
 
             const node: Node = this.target.children[i] as Node;
             const distance: number = Point.distance(node.position, this.centerPosition);
-            if (distance > this.stage.getWidth() / 10)
+            if (distance > (this.parent as NodeContainer).circle.radius * 2)
                 continue;
 
             // node is close to the center
