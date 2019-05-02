@@ -131,22 +131,35 @@ export class AverageCircle extends DisplayObject {
         // draw waveform
         const wave: Float32Array = AudioHandler.firstOrderWaveform;
         const waveAverage: number = wave.reduce((acc, v) => acc + v, 0) / wave.length;
+        const waveMinimum: number = wave.reduce((acc, v) => Math.min(acc, v), wave[0]);
         const maxAmplitude: number = 100; // in pixels
+        // first
         const points: Array<{x: number, y: number}> = [];
+        const points2: Array<{x: number, y: number}> = [];
         for (let i: number = 0, angle: number = Math.PI / 2; i < wave.length; ++ i, angle += Math.PI / wave.length) {
-            const amplitude: number = Math.max(0, wave[i] - waveAverage);
+            const amplitude: number = Math.max(0, wave[i] - waveMinimum);
             const x: number = Math.cos(angle) * (this.radius + maxAmplitude * amplitude);
             const y: number = Math.sin(angle) * (this.radius + maxAmplitude * amplitude);
+            const amplitude2: number = Math.max(0, wave[i] - waveAverage);
+            const x2: number = Math.cos(angle) * (5 + this.radius + maxAmplitude * amplitude2);
+            const y2: number = Math.sin(angle) * (5 + this.radius + maxAmplitude * amplitude2);
             points.push({x, y});
+            points2.push({x: x2, y: y2});
         }
-        const n: number = points.length;
-        for (let i: number = n - 1; i >= 0; -- i) {
+        for (let i: number = points.length - 1; i >= 0; -- i) {
             points.push({x: - points[i].x, y: points[i].y});
+            points2.push({x: - points2[i].x, y: points2[i].y});
         }
-        this.graphics.beginFill(0xFFFFFF, 0.2);
-        this.graphics.lineStyle(this.lineWidth, 0xFFFFFF);
+        this.graphics.beginFill(0xFFFFFF, 0.02);
+        this.graphics.lineStyle(this.lineWidth, 0xFFFFFF, 0.2);
         this.graphics.moveTo(points[0].x, points[0].y);
         for (const point of points) {
+            this.graphics.lineTo(point.x, point.y);
+        }
+        this.graphics.beginFill(0xFFFFFF, 0.2);
+        this.graphics.lineStyle(this.lineWidth, 0xFFFFFF, 1);
+        this.graphics.moveTo(points2[0].x, points2[0].y);
+        for (const point of points2) {
             this.graphics.lineTo(point.x, point.y);
         }
 

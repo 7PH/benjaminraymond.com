@@ -5,7 +5,7 @@ export default class AudioHandler {
 
     static readonly FFT_SIZE: number = 256;
 
-    static readonly STATS_UPDATE_INTERVAL: number = 1000 / 40;
+    static readonly STATS_UPDATE_INTERVAL: number = 1000 / 60;
 
     static context: AudioContext;
 
@@ -109,7 +109,7 @@ export default class AudioHandler {
             if (value > this.firstOrderWaveform[index])
                 this.firstOrderWaveform[index] = value;
             else
-                this.firstOrderWaveform[index] += (value - this.firstOrderWaveform[index]) * 1.1 * delta;
+                this.firstOrderWaveform[index] += (value - this.firstOrderWaveform[index]) * 0.5 * delta;
         });
 
         this.lastUpdateDelta = Date.now();
