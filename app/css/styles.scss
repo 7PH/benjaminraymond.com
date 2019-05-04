@@ -113,7 +113,7 @@ header {
 
     #page-title {
         margin-top: 0;
-        font-size: 250%;
+        font-size: 200%;
         font-family: 'Kalam';
     }
     #page-title.outofscreen {
@@ -127,14 +127,14 @@ header {
         font-family: 'Sacramento', cursive;
     }
     #page-title > p.subtitle {
-        margin-top: 0;
-        margin-bottom: -44px;
-        color: #999999;
+        margin-top: 8px;
+        margin-bottom: 0;
+        color: #999;
         font-size: 60%;
     }
     #page-title > p.text {
         font-size: 50%;
-        margin-top: 35px;
+        margin-top: -6px;
     }
     #page-title a {
         color: #ff5555;
