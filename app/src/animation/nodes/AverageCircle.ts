@@ -31,9 +31,19 @@ export class AverageCircle extends DisplayObject {
     public targetPosition: PIXI.Point = new PIXI.Point(0, 0);
 
     /**
+     * Target random rotation
+     */
+    public targetRotation: number = 0;
+
+    /**
      * Timestamp of the last position update in ms
      */
-    public lastUpdateRandomAngle: number = 0;
+    public lastUpdateRandomPosition: number = 0;
+
+    /**
+     * Timestamp of the last random rotation update
+     */
+    public lastUpdateRandomRotation: number = 0;
 
     /**
      * Random angle
@@ -84,10 +94,19 @@ export class AverageCircle extends DisplayObject {
         });
 
         // update shift from center
-        if (Date.now() > 400 + this.lastUpdateRandomAngle) {
+        if (Date.now() > 400 + this.lastUpdateRandomPosition) {
             this.randomAngle = Math.random() * 2 * Math.PI;
-            this.lastUpdateRandomAngle = Date.now();
+            this.lastUpdateRandomPosition = Date.now();
         }
+
+        // update rotation
+        if (Date.now() > 1000 + this.lastUpdateRandomRotation) {
+            this.targetRotation = AudioHandler.firstOrderAverage * 2 *(Math.random() - .5);
+            this.lastUpdateRandomRotation = Date.now();
+        }
+
+        // rotation
+        this.rotation += (this.targetRotation - this.rotation) * delta * 0.5;
 
         // get circle closer to target location
         this.updatePosition();

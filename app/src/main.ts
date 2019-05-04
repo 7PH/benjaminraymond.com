@@ -53,11 +53,12 @@ async function init() {
     // prevent multi clicks
     document.removeEventListener('click', init);
 
-    // start song
-    await restartSong();
-
     // 1 fade out the 'click to play' screen
     pagePreview.classList.add('goaway');
+
+    // init song
+    await restartSong();
+    AudioHandler.song.pause();
 
     setTimeout(async () => {
 
@@ -68,7 +69,13 @@ async function init() {
         stage = new Stage('animation-canvas');
         rebuildStage();
 
-    }, 2000);
+    }, 1000);
+
+    setTimeout(async () => {
+
+        // start song
+        await restartSong();
+    }, 4000);
 }
 
 function getMusicPath(): string | undefined {
