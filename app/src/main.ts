@@ -75,6 +75,11 @@ async function init() {
 
         // start song
         await restartSong();
+
+        // display title, metas, links
+        const elements = document.getElementsByClassName("outofscreen");
+        while (elements.length > 0)
+            elements[0].classList.remove("outofscreen");
     }, 4000);
 }
 
