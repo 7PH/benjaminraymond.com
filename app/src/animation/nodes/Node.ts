@@ -69,7 +69,7 @@ export class Node extends DisplayObject {
         // draw node
         this.graphics.clear();
         this.graphics.beginFill(AudioHandler.average > 0.15 ? this.color : grayscale);
-        this.graphics.drawCircle(0, 0, this.radius);
+        this.graphics.drawCircle(0, 0, this.radius + AudioHandler.firstOrderAverage * 4);
         this.graphics.endFill();
     }
 }
