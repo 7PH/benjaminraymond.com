@@ -2,6 +2,7 @@ import {DisplayObject} from "../engine/DisplayObject";
 import AudioHandler from "../../audio/AudioHandler";
 import {Stage} from "../engine/Stage";
 import BlurFilter = PIXI.filters.BlurFilter;
+import {Point} from "../engine/Point";
 
 export class AverageCircle extends DisplayObject {
 
@@ -85,7 +86,7 @@ export class AverageCircle extends DisplayObject {
 
         this.eyesClosed = Math.floor(10 * Date.now() / 1000) % 30 === 0;
         this.lineWidth = 1 + AudioHandler.linearAverage * 8;
-        this.filter.blur = 0.2 + 8 * Math.exp(- 16 * AudioHandler.linearAverage);
+        this.filter.blur = Math.floor(0.2 + 4 * Math.exp(- 24 * AudioHandler.linearAverage));
         this.radius = this.baseRadius + 100 * AudioHandler.linearAverage;
 
         this.setForce("main", {
@@ -94,13 +95,13 @@ export class AverageCircle extends DisplayObject {
         });
 
         // update shift from center
-        if (Date.now() > 400 + this.lastUpdateRandomPosition) {
+        if (Date.now() > 800 + this.lastUpdateRandomPosition) {
             this.randomAngle = Math.random() * 2 * Math.PI;
             this.lastUpdateRandomPosition = Date.now();
         }
 
         // update rotation
-        if (Date.now() > 1000 + this.lastUpdateRandomRotation) {
+        if (Date.now() > 1400 + this.lastUpdateRandomRotation) {
             this.targetRotation = AudioHandler.firstOrderAverage * 2 *(Math.random() - .5);
             this.lastUpdateRandomRotation = Date.now();
         }
@@ -120,17 +121,18 @@ export class AverageCircle extends DisplayObject {
      */
     private updatePosition() {
 
-        const radius: number = this.baseRadius * (.5 + AudioHandler.firstOrderAverage * .5);
+        const radius: number = AudioHandler.firstOrderAverage * 300;
         const x: number = Math.cos(this.randomAngle) * radius;
         const y: number = Math.sin(this.randomAngle) * radius;
 
         const mousePos = this.stage.renderer.plugins.interaction.mouse.global;
+        const mouseVectorLength = Math.min(radius, Point.distance(mousePos, this.position));
         const mouseAngle: number = Math.atan2(
-            mousePos.y - this.centerY,
-            mousePos.x - this.centerX
+            mousePos.y - this.position.x,
+            mousePos.x - this.position.y
         );
-        const mouseVectorX = Math.cos(mouseAngle) * radius;
-        const mouseVectorY = Math.sin(mouseAngle) * radius;
+        const mouseVectorX = Math.cos(mouseAngle) * mouseVectorLength;
+        const mouseVectorY = Math.sin(mouseAngle) * mouseVectorLength;
 
         this.targetPosition.x = this.centerX + x + mouseVectorX;
         this.targetPosition.y = this.centerY + y + mouseVectorY;
