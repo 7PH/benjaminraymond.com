@@ -228,12 +228,17 @@ header {
 @media screen and (max-width: 745px) {
     #page-title > h1 {
         font-size: 120% !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 0;
     }
 
     #page-title > p.subtitle {
+        font-size: 50% !important;
         margin-bottom: -25px !important;
-        font-size: 70% !important;
+        margin-top: 45px!important;
+    }
+
+    #page-title > p.text {
+        margin-top: 25px!important;
     }
 }
 
