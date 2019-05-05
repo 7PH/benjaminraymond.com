@@ -1,21 +1,34 @@
 import {DisplayObjectContainer} from "./DisplayObjectContainer";
 
 /**
- *
+ * Base container of every object on the scene
  */
 export class Stage extends DisplayObjectContainer {
 
+    /**
+     * HTML id of the canvas container
+     */
     public canvasContainerID: string;
 
+    /**
+     * Reference to the canvas container
+     */
     public canvasContainer: HTMLDivElement;
 
-    public lastDelta: number;
-
+    /**
+     * PIXI renderer
+     */
     public renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer;
 
-    public lastUpdateDelta: number;
+    /**
+     * Date of the last call to update
+     */
+    public lastUpdateDelta: number = 0;
 
-    public readonly mouse: { position: PIXI.Point };
+    /**
+     * Last delta value (seconds)
+     */
+    public lastDelta: number = 0;
 
     constructor (canvasID: string) {
 
@@ -23,42 +36,40 @@ export class Stage extends DisplayObjectContainer {
         //  even if it is null on the Stage itself.
         super(null as any as Stage);
 
+        // init container
         this.canvasContainerID = canvasID;
         this.canvasContainer = document.getElementById(canvasID) as HTMLDivElement;
-        this.lastDelta = 0;
 
+        // create renderer
         this.renderer = PIXI.autoDetectRenderer(
             window.innerWidth,
             window.innerHeight
         );
         this.canvasContainer.appendChild(this.renderer.view);
         this.renderer.render(this);
-
-        this.mouse = {
-            position: new PIXI.Point(0, 0)
-        };
-        this.on('mousedown', (e: any) => {
-            this.mouse.position.set(
-                e.data.global.x,
-                e.data.global.y
-            );
-        });
-
-        this.lastUpdateDelta = 0;
     }
 
+    /**
+     * Get the stage width
+     */
     getWidth() {
         return this.canvasContainer.clientWidth;
     }
 
+    /**
+     * Get the stage height
+     */
     getHeight() {
         return this.canvasContainer.clientHeight;
     }
 
+    /**
+     * Update every DisplayObject on stage
+     */
     update() {
-        const t = Date.now() / 1000;
-        this.lastDelta = t - this.lastUpdateDelta;
-        this.lastUpdateDelta = t;
+        const currentDateMs = Date.now() / 1000;
+        this.lastDelta = currentDateMs - this.lastUpdateDelta;
+        this.lastUpdateDelta = currentDateMs;
         if (this.lastDelta > 1) this.lastDelta = 0;
         super.update(this.lastDelta);
 
@@ -66,6 +77,9 @@ export class Stage extends DisplayObjectContainer {
         requestAnimationFrame(this.update.bind(this));
     }
 
+    /**
+     * Run the stage
+     */
     run() {
         this.lastUpdateDelta = Date.now() / 1000;
         requestAnimationFrame(this.update.bind(this));

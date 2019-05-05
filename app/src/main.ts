@@ -2,7 +2,7 @@ import {Stage} from "./animation/engine/Stage";
 import {NodeContainer} from "./animation/nodes/NodeContainer";
 import AudioHandler from "./audio/AudioHandler";
 import {AnimatedBackground} from "./animation/nodes/AnimatedBackground";
-import {AverageCircle} from "./animation/nodes/AverageCircle";
+import {PowerCircle} from "./animation/nodes/PowerCircle";
 import {DisplayObject} from "./animation/engine/DisplayObject";
 
 export const DEBUG: boolean = document.location.hash === '#debug';
@@ -16,7 +16,7 @@ function rebuildStage() {
         stage.removeChildAt(0);
 
     // average circle
-    const avgCircle: AverageCircle = new AverageCircle(
+    const avgCircle: PowerCircle = new PowerCircle(
         stage,
         stage.getWidth() / 2,
         6 * stage.getHeight() / 10

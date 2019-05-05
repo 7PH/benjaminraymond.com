@@ -1,6 +1,6 @@
 
 /**
- *
+ * Utility for point/vector - related methods
  */
 export class Point {
 

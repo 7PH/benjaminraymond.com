@@ -2,26 +2,69 @@ import Graphics = PIXI.Graphics;
 import {Stage} from "./Stage";
 
 
+/**
+ * A DisplayObject is the base class for "something that can be displayed".
+ * It can handle a list of forces applied to it and move accordingly.
+ */
 export class DisplayObject extends PIXI.Container {
 
     private static ID: number = 1;
 
+    /**
+     * unique id for every display object
+     */
     public readonly id: number;
+
+    /**
+     * Reference to the parent stage
+     */
     public stage: Stage;
+
+    /**
+     * Reference to the underlying Graphics element
+     */
     public graphics?: Graphics;
+
+    /**
+     * Current velocity vector in pixels/second
+     */
     public velocity: PIXI.Point;
+
+    /**
+     * Current acceleration vector in pixels/second^2
+     */
     public acceleration: PIXI.Point;
+
+    /**
+     * Friction vector
+     */
     public friction: PIXI.Point;
+
+    /**
+     * All the forces applied to this DisplayObject
+     */
     public forces: {[forceId: string]: {x: number, y: number}};
+
+    /**
+     * Mass of the DisplayObject
+     */
     public mass: number;
 
+    /**
+     * Creates a new DisplayObject
+     * @param stage
+     * @param appendGraphics Whether to append a Graphics element to this DisplayObject
+     */
     constructor (stage: Stage, appendGraphics?: boolean) {
         super();
-        // params
+
+        // normalize parameter value
         appendGraphics = typeof(appendGraphics) == 'undefined' ? true : appendGraphics;
 
+        // create an unique id
         this.id = DisplayObject.ID ++;
 
+        // set-up defaults
         this.stage = stage;
         this.graphics = undefined;
         this.velocity = new PIXI.Point(0, 0);
@@ -37,6 +80,11 @@ export class DisplayObject extends PIXI.Container {
         }
     }
 
+    /**
+     * Set a force to this DisplayObject
+     * @param name Name of the force
+     * @param vector Force vector, both values in pixels/second2
+     */
     setForce (name: string, vector: PIXI.Point | {x: number , y: number}) {
         this.forces[name] = {
             x: vector.x,
@@ -44,14 +92,25 @@ export class DisplayObject extends PIXI.Container {
         };
     }
 
+    /**
+     * Unregister a force by its name
+     * @param name
+     */
     clearForce (name: string) {
         delete this.forces[name];
     }
 
+    /**
+     * Clear all registered forces on this DisplayObject
+     */
     clearForces () {
         this.forces = {};
     }
 
+    /**
+     * Set the friction vector
+     * @param value
+     */
     setFriction (value: number | PIXI.Point | {x: number, y: number}) {
         if (typeof value === "number")
             this.friction = new PIXI.Point(value, value);
@@ -59,8 +118,13 @@ export class DisplayObject extends PIXI.Container {
             this.friction.set(value.x, value.y);
     }
 
-    /** Updates the DisplayObject position, velocity & acceleration */
+    /**
+     * Updates the DisplayObject position, velocity & acceleration.
+     * This method is called by the Stage but should also be applied in subclasses overriding this method.
+     * @param delta
+     */
     update(delta: number) {
+
         // friction
         this.setForce('friction', new PIXI.Point(
             - this.friction.x * this.velocity.x,

@@ -4,7 +4,7 @@ import {Stage} from "../engine/Stage";
 import BlurFilter = PIXI.filters.BlurFilter;
 import {Point} from "../engine/Point";
 
-export class AverageCircle extends DisplayObject {
+export class PowerCircle extends DisplayObject {
 
     /**
      * Circle line width in pixels
@@ -121,7 +121,7 @@ export class AverageCircle extends DisplayObject {
      */
     private updatePosition() {
 
-        const radius: number = AudioHandler.firstOrderAverage * 300;
+        const radius: number = AudioHandler.firstOrderAverage * 256;
         const x: number = Math.cos(this.randomAngle) * radius;
         const y: number = Math.sin(this.randomAngle) * radius;
 

@@ -3,16 +3,34 @@ import Timer = NodeJS.Timer;
 
 export default class AudioHandler {
 
+    /**
+     * Size of the FFT
+     */
     static readonly FFT_SIZE: number = 512;
 
+    /**
+     * Interval for computing audio statistics (updating the waveform)
+     */
     static readonly STATS_UPDATE_INTERVAL: number = 1000 / 60;
 
+    /**
+     * Audio context
+     */
     static context: AudioContext;
 
+    /**
+     * Audio analyser
+     */
     static analyser: AnalyserNode;
 
+    /**
+     * Audio gain handler
+     */
     static gain: GainNode;
 
+    /**
+     * HTML audio element
+     */
     static song: HTMLAudioElement;
 
     /**
@@ -51,11 +69,18 @@ export default class AudioHandler {
     static maximum: number = 0;
 
     /**
-     *
+     * Whether the music is currently playing
      */
     static isPlaying: boolean;
 
+    /**
+     * Date of the last update
+     */
     private static lastUpdateDelta: number = 0;
+
+    /**
+     * Timer for the stats interval update
+     */
     private static updateStatsInterval: Timer;
 
     /**
