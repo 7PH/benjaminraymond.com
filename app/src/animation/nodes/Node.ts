@@ -68,6 +68,12 @@ export class Node extends DisplayObject {
 
         // draw node
         this.graphics.clear();
+        // aura
+        const auraRadius = (this.radius + AudioHandler.firstOrderAverage * 4) * 3 * (1 - Math.exp(- 3 * AudioHandler.average));
+        this.graphics.lineStyle(1, AudioHandler.average > 0.15 ? this.color : grayscale, 0.3);
+        this.graphics.drawCircle(0, 0, auraRadius);
+        // node
+        this.graphics.lineStyle(0);
         this.graphics.beginFill(AudioHandler.average > 0.15 ? this.color : grayscale);
         this.graphics.drawCircle(0, 0, this.radius + AudioHandler.firstOrderAverage * 4);
         this.graphics.endFill();

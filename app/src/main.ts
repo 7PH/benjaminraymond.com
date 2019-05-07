@@ -78,8 +78,10 @@ async function init() {
 
         // display title, metas, links
         const elements = document.getElementsByClassName("outofscreen");
-        while (elements.length > 0)
+        while (elements.length > 0) {
+            elements[0].classList.add("onthescreen");
             elements[0].classList.remove("outofscreen");
+        }
     }, 4000);
 }
 
@@ -106,6 +108,28 @@ async function restartSong() {
         await AudioHandler.play();
     }
 }
+
+
+/**
+ * @TODO finish
+ */
+async function switchToPage2() {
+
+    document.getElementById('animation-container')!.style["top"] = "-100vh";
+
+    // display title, metas, links
+    const elements = document.getElementsByClassName("onthescreen");
+    while (elements.length > 0) {
+        elements[0].classList.add("outofscreen");
+        elements[0].classList.remove("onthescreen");
+    }
+
+    setTimeout(() => {
+        stage.cacheAsBitmap = true;
+        AudioHandler.song.pause();
+    }, 4000);
+}
+//(document.getElementById('fps-info')!).addEventListener('click', switchToPage2);
 
 document.addEventListener('click', init);
 

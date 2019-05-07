@@ -26,7 +26,7 @@ body {
 }
 
 .animated-slow {
-    transition: all 4s ease-out;
+    transition: all 4s ease-in-out;
 }
 
 .goaway {
@@ -50,6 +50,9 @@ body {
 }
 
 #animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 
@@ -64,9 +67,6 @@ body {
     }
 
     #animation-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
 
