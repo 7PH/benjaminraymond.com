@@ -17,7 +17,6 @@
     "dependencies": {},
     "devDependencies": {
         "@types/node": "^10.14.16",
-        "@types/pixi.js": "^4.8.8",
         "browserify": "^16.5.0",
         "gulp": "^4.0.2",
         "gulp-clean-css": "^3.10.0",
@@ -30,8 +29,9 @@
         "gulp-uglify": "^3.0.2",
         "http-server": "^0.11.1",
         "minify-html": "0.0.2",
+        "pixi.js": "^5.1.2",
         "tsify": "^4.0.1",
-        "typescript": "^2.9.2",
+        "typescript": "^3.4.2",
         "vinyl-buffer": "^1.0.1",
         "vinyl-source-stream": "^2.0.0"
     }

@@ -1,4 +1,4 @@
-import Graphics = PIXI.Graphics;
+import {Graphics} from "pixi.js"
 import {Stage} from "./Stage";
 
 

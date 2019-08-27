@@ -5,8 +5,8 @@
         "removeComments": true,
         "declaration": true,
         "outDir": "./dist/",
-        "target": "ES5",
-        "lib": ["ES6", "DOM"]
+        "target": "es5",
+        "lib": ["es6", "dom"]
     },
     "include": [
       "app/**/*"
