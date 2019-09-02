@@ -7,7 +7,6 @@ const buffer = require('vinyl-buffer');
 const tsify = require("tsify");
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
-const jsObfuscator = require('gulp-javascript-obfuscator');
 const htmlmin = require('gulp-htmlmin');
 const pug = require('gulp-pug');
 
@@ -45,7 +44,6 @@ gulp.task("typescript", function () {
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
-        .pipe(jsObfuscator())
         .pipe(gulp.dest("dist"));
 });
 
