@@ -32,18 +32,18 @@ gulp.task("copy-scss", function () {
 
 gulp.task("typescript", function () {
     return browserify({
-            basedir: '.',
-            debug: true,
-            entries: ['app/src/main.ts'],
-            cache: {},
-            packageCache: {}
-        })
+        basedir: '.',
+        debug: true,
+        entries: ['app/src/main.ts'],
+        cache: {},
+        packageCache: {},
+    })
         .plugin(tsify)
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest("dist"));
 });
 
