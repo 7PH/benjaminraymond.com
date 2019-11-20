@@ -82,7 +82,7 @@ async function init() {
             elements[0].classList.add("onthescreen");
             elements[0].classList.remove("outofscreen");
         }
-    }, 4000);
+    }, 8000);
 }
 
 function getMusicPath(): string | undefined {

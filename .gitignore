@@ -1,2 +1,4 @@
-app/assets/cv.pdf
+app/assets/resume.pdf
+app/assets/*.webm
+app/assets/*.mp3
 scripts/
