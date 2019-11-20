@@ -32,9 +32,24 @@ export class PowerCircle extends DisplayObject {
     public targetPosition: PIXI.Point = new PIXI.Point(0, 0);
 
     /**
+     * Rotation acceleration
+     */
+    public rotationAcceleration: number = 0;
+
+    /**
+     * Rotation velocity
+     */
+    public rotationVelocity: number = 0;
+
+    /**
      * Target random rotation
      */
     public targetRotation: number = 0;
+
+    /**
+     * Base rotation (based on current spin count)
+     */
+    public targetBaseRotation: number = 0;
 
     /**
      * Timestamp of the last position update in ms
@@ -103,11 +118,18 @@ export class PowerCircle extends DisplayObject {
         // update rotation
         if (Date.now() > 1400 + this.lastUpdateRandomRotation) {
             this.targetRotation = AudioHandler.firstOrderAverage * 2 *(Math.random() - .5);
+
+            if (Math.random() < 0.1 && AudioHandler.firstOrderAverage >= .25) {
+                this.targetBaseRotation -= Math.PI * 2;
+            }
             this.lastUpdateRandomRotation = Date.now();
         }
 
         // rotation
-        this.rotation += (this.targetRotation - this.rotation) * delta * 0.5;
+        this.rotationAcceleration = (this.targetRotation + this.targetBaseRotation - this.rotation) * AudioHandler.firstOrderAverage * 16;
+        this.rotationAcceleration += - this.rotationVelocity * 2;
+        this.rotationVelocity += this.rotationAcceleration * delta;
+        this.rotation += this.rotationVelocity * delta;
 
         // get circle closer to target location
         this.updatePosition();
