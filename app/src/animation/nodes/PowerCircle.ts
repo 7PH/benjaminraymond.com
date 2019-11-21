@@ -119,7 +119,7 @@ export class PowerCircle extends DisplayObject {
         if (Date.now() > 1400 + this.lastUpdateRandomRotation) {
             this.targetRotation = AudioHandler.firstOrderAverage * 2 *(Math.random() - .5);
 
-            if (Math.random() < 0.1 && AudioHandler.firstOrderAverage >= .25) {
+            if (Math.random() < 0.05 && AudioHandler.firstOrderAverage >= .25) {
                 this.targetBaseRotation -= Math.PI * 2;
             }
             this.lastUpdateRandomRotation = Date.now();
