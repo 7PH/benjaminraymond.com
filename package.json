@@ -28,7 +28,7 @@
         "gulp-uglify": "^3.0.2",
         "http-server": "^0.11.1",
         "minify-html": "0.0.2",
-        "pixi.js": "^5.1.2",
+        "pixi.js": "^5.2.0",
         "tsify": "^4.0.1",
         "typescript": "^3.4.2",
         "vinyl-buffer": "^1.0.1",
