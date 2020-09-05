@@ -3,10 +3,6 @@ import {NodeContainer} from "./animation/nodes/NodeContainer";
 import AudioHandler from "./audio/AudioHandler";
 import {AnimatedBackground} from "./animation/nodes/AnimatedBackground";
 import {PowerCircle} from "./animation/nodes/PowerCircle";
-import {DisplayObject} from "./animation/engine/DisplayObject";
-
-export const DEBUG: boolean = document.location.hash === '#debug';
-console.log("DEBUG", DEBUG);
 
 let stage: Stage;
 

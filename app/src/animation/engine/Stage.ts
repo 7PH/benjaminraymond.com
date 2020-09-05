@@ -34,7 +34,7 @@ export class Stage extends DisplayObjectContainer {
 
         // we want the stage typed as 'Stage'
         //  even if it is null on the Stage itself.
-        super(null as any as Stage);
+        super(null as any);
 
         // init container
         this.canvasContainerID = canvasID;
