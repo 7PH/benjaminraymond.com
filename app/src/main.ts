@@ -81,6 +81,8 @@ function prepareSong() {
         // music changed
         AudioHandler.init(path);
     }
+
+    return typeof path !== 'undefined';
 }
 
 async function playSong() {
@@ -108,6 +110,7 @@ document.addEventListener('click', init);
 
 const musicSelect: HTMLSelectElement = document.getElementById('music-select') as HTMLSelectElement;
 musicSelect.addEventListener('change', async () => {
-    prepareSong();
-    await playSong();
+    if (prepareSong()) {
+        await playSong();
+    }
 });

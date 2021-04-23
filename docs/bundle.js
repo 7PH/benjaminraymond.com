@@ -738,6 +738,7 @@ function prepareSong() {
     if (typeof path !== "undefined") {
         AudioHandler_1.default.init(path);
     }
+    return typeof path !== 'undefined';
 }
 function playSong() {
     return __awaiter(this, void 0, void 0, function () {
@@ -769,11 +770,12 @@ musicSelect.addEventListener('change', function () { return __awaiter(_this, voi
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                prepareSong();
+                if (!prepareSong()) return [3, 2];
                 return [4, playSong()];
             case 1:
                 _a.sent();
-                return [2];
+                _a.label = 2;
+            case 2: return [2];
         }
     });
 }); });
