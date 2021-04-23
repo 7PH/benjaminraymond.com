@@ -677,14 +677,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Stage_1 = require("./animation/engine/Stage");
 var NodeContainer_1 = require("./animation/nodes/NodeContainer");
 var AudioHandler_1 = require("./audio/AudioHandler");
 var AnimatedBackground_1 = require("./animation/nodes/AnimatedBackground");
 var PowerCircle_1 = require("./animation/nodes/PowerCircle");
-exports.DEBUG = document.location.hash === '#debug';
-console.log("DEBUG", exports.DEBUG);
 var stage;
 function rebuildStage() {
     while (stage.children.length > 0)
@@ -702,51 +701,27 @@ function init() {
         var pagePreview, pageContent;
         var _this = this;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    pagePreview = document.getElementById('page-preview');
-                    pageContent = document.getElementById('page-content');
-                    if (pagePreview === null || pageContent === null)
-                        return [2, alert("Error. Please try to refresh the page")];
-                    setInterval(function () {
-                        var fps = (1 / stage.lastDelta);
-                        var el = document.getElementById('fps');
-                        if (el === null)
-                            return;
-                        el.innerHTML = Math.floor(fps).toString();
-                    }, 1000);
-                    document.removeEventListener('click', init);
-                    pagePreview.classList.add('goaway');
-                    return [4, restartSong()];
-                case 1:
-                    _a.sent();
-                    AudioHandler_1.default.song.pause();
-                    setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
-                        return __generator(this, function (_a) {
-                            pageContent.style.display = 'block';
-                            stage = new Stage_1.Stage('animation-canvas');
-                            rebuildStage();
-                            return [2];
-                        });
-                    }); }, 1000);
-                    setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
-                        var elements;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4, restartSong()];
-                                case 1:
-                                    _a.sent();
-                                    elements = document.getElementsByClassName("outofscreen");
-                                    while (elements.length > 0) {
-                                        elements[0].classList.add("onthescreen");
-                                        elements[0].classList.remove("outofscreen");
-                                    }
-                                    return [2];
-                            }
-                        });
-                    }); }, 8000);
+            pagePreview = document.getElementById('page-preview');
+            pageContent = document.getElementById('page-content');
+            if (pagePreview === null || pageContent === null)
+                return [2, alert("Error. Please try to refresh the page")];
+            document.removeEventListener('click', init);
+            pagePreview.classList.add('goaway');
+            prepareSong();
+            AudioHandler_1.default.song.pause();
+            setTimeout(function () { return __awaiter(_this, void 0, void 0, function () {
+                var elements;
+                return __generator(this, function (_a) {
+                    playSong();
+                    elements = document.getElementsByClassName("outofscreen");
+                    while (elements.length > 0) {
+                        elements[0].classList.add("onthescreen");
+                        elements[0].classList.remove("outofscreen");
+                    }
                     return [2];
-            }
+                });
+            }); }, 0);
+            return [2];
         });
     });
 }
@@ -754,49 +729,54 @@ function getMusicPath() {
     var path = document.getElementById('music-select').value;
     return path === "false" ? undefined : path;
 }
-function restartSong() {
+function prepareSong() {
+    if (typeof AudioHandler_1.default.song !== 'undefined') {
+        AudioHandler_1.default.song.pause();
+        AudioHandler_1.default.song.currentTime = 0;
+    }
+    var path = getMusicPath();
+    if (typeof path !== "undefined") {
+        AudioHandler_1.default.init(path);
+    }
+}
+function playSong() {
     return __awaiter(this, void 0, void 0, function () {
-        var path;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    if (typeof AudioHandler_1.default.song !== 'undefined') {
-                        AudioHandler_1.default.song.pause();
-                        AudioHandler_1.default.song.currentTime = 0;
-                    }
-                    path = getMusicPath();
-                    if (!(typeof path !== "undefined")) return [3, 2];
-                    AudioHandler_1.default.init(path);
-                    return [4, AudioHandler_1.default.play()];
+                case 0: return [4, AudioHandler_1.default.play()];
                 case 1:
                     _a.sent();
-                    _a.label = 2;
-                case 2: return [2];
+                    return [2];
             }
         });
     });
 }
-function switchToPage2() {
-    return __awaiter(this, void 0, void 0, function () {
-        var elements;
-        return __generator(this, function (_a) {
-            document.getElementById('animation-container').style["top"] = "-100vh";
-            elements = document.getElementsByClassName("onthescreen");
-            while (elements.length > 0) {
-                elements[0].classList.add("outofscreen");
-                elements[0].classList.remove("onthescreen");
-            }
-            setTimeout(function () {
-                stage.cacheAsBitmap = true;
-                AudioHandler_1.default.song.pause();
-            }, 4000);
-            return [2];
-        });
-    });
-}
+window.addEventListener('DOMContentLoaded', function () {
+    prepareSong();
+    stage = new Stage_1.Stage('animation-canvas');
+    rebuildStage();
+    setInterval(function () {
+        var fps = (1 / stage.lastDelta);
+        var el = document.getElementById('fps');
+        if (el === null)
+            return;
+        el.innerHTML = Math.floor(fps).toString();
+    }, 1000);
+});
 document.addEventListener('click', init);
 var musicSelect = document.getElementById('music-select');
-musicSelect.addEventListener('change', function () { return restartSong(); });
+musicSelect.addEventListener('change', function () { return __awaiter(_this, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                prepareSong();
+                return [4, playSong()];
+            case 1:
+                _a.sent();
+                return [2];
+        }
+    });
+}); });
 
 },{"./animation/engine/Stage":4,"./animation/nodes/AnimatedBackground":5,"./animation/nodes/NodeContainer":7,"./animation/nodes/PowerCircle":9,"./audio/AudioHandler":10}],12:[function(require,module,exports){
 /*!

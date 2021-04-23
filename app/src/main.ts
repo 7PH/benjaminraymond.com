@@ -37,15 +37,6 @@ async function init() {
     if (pagePreview === null || pageContent === null)
         return alert("Error. Please try to refresh the page");
 
-    // fps counter
-    setInterval(() => {
-        const fps = (1 / stage.lastDelta);
-        let el = document.getElementById('fps');
-        if (el === null)
-            return;
-        el.innerHTML = Math.floor(fps).toString();
-    }, 1000);
-
     // prevent multi clicks
     document.removeEventListener('click', init);
 
@@ -53,24 +44,13 @@ async function init() {
     pagePreview.classList.add('goaway');
 
     // init song
-    await restartSong();
+    prepareSong();
     AudioHandler.song.pause();
 
     setTimeout(async () => {
 
-        // 2 display the stuff behind
-        pageContent.style.display = 'block';
-
-        // animation
-        stage = new Stage('animation-canvas');
-        rebuildStage();
-
-    }, 1000);
-
-    setTimeout(async () => {
-
         // start song
-        await restartSong();
+        playSong();
 
         // display title, metas, links
         const elements = document.getElementsByClassName("outofscreen");
@@ -78,7 +58,7 @@ async function init() {
             elements[0].classList.add("onthescreen");
             elements[0].classList.remove("outofscreen");
         }
-    }, 8000);
+    }, 0);
 }
 
 function getMusicPath(): string | undefined {
@@ -89,7 +69,7 @@ function getMusicPath(): string | undefined {
 /**
  *
  */
-async function restartSong() {
+function prepareSong() {
 
     if (typeof AudioHandler.song !== 'undefined') {
         AudioHandler.song.pause();
@@ -98,36 +78,36 @@ async function restartSong() {
 
     const path = getMusicPath();
     if (typeof path !== "undefined") {
-
         // music changed
         AudioHandler.init(path);
-        await AudioHandler.play();
     }
 }
 
-
-/**
- * @TODO finish
- */
-async function switchToPage2() {
-
-    document.getElementById('animation-container')!.style["top"] = "-100vh";
-
-    // display title, metas, links
-    const elements = document.getElementsByClassName("onthescreen");
-    while (elements.length > 0) {
-        elements[0].classList.add("outofscreen");
-        elements[0].classList.remove("onthescreen");
-    }
-
-    setTimeout(() => {
-        stage.cacheAsBitmap = true;
-        AudioHandler.song.pause();
-    }, 4000);
+async function playSong() {
+    await AudioHandler.play();
 }
-//(document.getElementById('fps-info')!).addEventListener('click', switchToPage2);
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    prepareSong();
+
+    stage = new Stage('animation-canvas');
+    rebuildStage();
+
+    // fps counter
+    setInterval(() => {
+        const fps = (1 / stage.lastDelta);
+        let el = document.getElementById('fps');
+        if (el === null)
+            return;
+        el.innerHTML = Math.floor(fps).toString();
+    }, 1000);
+});
 
 document.addEventListener('click', init);
 
 const musicSelect: HTMLSelectElement = document.getElementById('music-select') as HTMLSelectElement;
-musicSelect.addEventListener('change', () => restartSong());
+musicSelect.addEventListener('change', async () => {
+    prepareSong();
+    await playSong();
+});
