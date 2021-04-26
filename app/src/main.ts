@@ -96,14 +96,24 @@ window.addEventListener('DOMContentLoaded', () => {
     stage = new Stage('animation-canvas');
     rebuildStage();
 
-    // fps counter
-    setInterval(() => {
-        const fps = (1 / stage.lastDelta);
+    if (document.location.hash === '#debug') {
+
+        // fps counter
+        setInterval(() => {
+            const fps = (1 / stage.lastDelta);
+            let el = document.getElementById('fps');
+            if (el === null)
+                return;
+            el.innerHTML = Math.floor(fps).toString();
+        }, 1000);
+
+    } else {
+
         let el = document.getElementById('fps');
-        if (el === null)
-            return;
-        el.innerHTML = Math.floor(fps).toString();
-    }, 1000);
+        if (el && el.parentElement) {
+            el.parentElement.style.display = 'none';
+        }
+    }
 });
 
 document.addEventListener('click', init);

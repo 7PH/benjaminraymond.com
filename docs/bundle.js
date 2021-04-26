@@ -489,7 +489,7 @@ var PowerCircle = (function (_super) {
         var wave = AudioHandler_1.default.firstOrderWaveform;
         var waveAverage = wave.reduce(function (acc, v) { return acc + v; }, 0) / wave.length;
         var waveMinimum = wave.reduce(function (acc, v) { return Math.min(acc, v); }, wave[0]);
-        var maxAmplitude = 100;
+        var maxAmplitude = this.radius;
         var points = [];
         var points2 = [];
         for (var i = 0, angle = Math.PI / 2 - 0.5 * Math.PI / wave.length; i < wave.length; ++i, angle += Math.PI / wave.length) {
@@ -756,13 +756,21 @@ window.addEventListener('DOMContentLoaded', function () {
     prepareSong();
     stage = new Stage_1.Stage('animation-canvas');
     rebuildStage();
-    setInterval(function () {
-        var fps = (1 / stage.lastDelta);
+    if (document.location.hash === '#debug') {
+        setInterval(function () {
+            var fps = (1 / stage.lastDelta);
+            var el = document.getElementById('fps');
+            if (el === null)
+                return;
+            el.innerHTML = Math.floor(fps).toString();
+        }, 1000);
+    }
+    else {
         var el = document.getElementById('fps');
-        if (el === null)
-            return;
-        el.innerHTML = Math.floor(fps).toString();
-    }, 1000);
+        if (el && el.parentElement) {
+            el.parentElement.style.display = 'none';
+        }
+    }
 });
 document.addEventListener('click', init);
 var musicSelect = document.getElementById('music-select');
