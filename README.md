@@ -1,6 +1,6 @@
 # benjamin-raymond.pro
 
-Just [my landing page](https://benjamin-raymond.pro)
+Just [my landing page](https://benjaminraymond.com)
 
 Please mention me if you use it for you c:
 
