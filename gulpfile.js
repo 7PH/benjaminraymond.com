@@ -12,7 +12,7 @@ const pug = require('gulp-pug');
 
 const pugPaths = { pages: ['app/views/*.pug'] };
 const scssPaths = { pages: ['app/css/*.scss'] };
-const resPaths = { pages: ['app/assets/*'] };
+const resPaths = { pages: ['app/assets/**/*'] };
 
 gulp.task("copy-views", () => {
     return gulp.src(pugPaths.pages)
