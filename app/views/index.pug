@@ -13,7 +13,15 @@
         cvLink: 'assets/resume.pdf',
         links: [
             {
-                title: 'Explore domaTeX',
+                title: 'Explore SkyChat - A virtual cinema platform',
+                href: 'https://github.com/skychatorg/skychat',
+                style: 'filter: brightness(0) invert(1);',
+                img: 'assets/skychat.png',
+                rel: 'nofollow',
+                target: '_blank'
+            },
+            {
+                title: 'Explore domaTeX - Create mathematics documents online',
                 href: 'https://domatex.fr',
                 img: 'assets/domatex.png',
                 rel: 'nofollow',
@@ -104,7 +112,7 @@ html
                         hr.separator
                     else
                         div.section-icon-container
-                            a.section-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel)
+                            a.section-icon-link(title=item.title, class='reflink', href=item.href, target=item.target, rel=item.rel, style=item.style)
                                 if item.icon
                                     i(class='fa fa-white ' + item.icon)
                                 else
