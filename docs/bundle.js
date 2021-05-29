@@ -578,7 +578,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var AudioHandler = (function () {
     function AudioHandler() {
     }
-    AudioHandler.init = function (src) {
+    AudioHandler.init = function (container, src) {
         var _this = this;
         this.context = new (AudioContext || window['webkitAudioContext'])();
         this.gain = AudioHandler.context.createGain();
@@ -588,6 +588,11 @@ var AudioHandler = (function () {
         this.isPlaying = false;
         var songSource = this.context.createMediaElementSource(this.song);
         songSource.connect(this.gain);
+        while (container.hasChildNodes()) {
+            container.removeChild(container.children[0]);
+        }
+        this.song.controls = true;
+        container.appendChild(this.song);
         this.analyser = this.context.createAnalyser();
         this.gain.connect(this.analyser);
         this.analyser.fftSize = AudioHandler.FFT_SIZE;
@@ -730,13 +735,14 @@ function getMusicPath() {
     return path === "false" ? undefined : path;
 }
 function prepareSong() {
+    var audioContainer = document.getElementById('audio');
     if (typeof AudioHandler_1.default.song !== 'undefined') {
         AudioHandler_1.default.song.pause();
         AudioHandler_1.default.song.currentTime = 0;
     }
     var path = getMusicPath();
     if (typeof path !== "undefined") {
-        AudioHandler_1.default.init(path);
+        AudioHandler_1.default.init(audioContainer, path);
     }
     return typeof path !== 'undefined';
 }

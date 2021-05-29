@@ -87,7 +87,7 @@ export default class AudioHandler {
      *
      * @param {string} src
      */
-    static init(src: string) {
+    static init(container: HTMLElement, src: string) {
 
         // context
         this.context = new (AudioContext || (<any>window)['webkitAudioContext'])();
@@ -104,6 +104,12 @@ export default class AudioHandler {
         // source
         const songSource = this.context.createMediaElementSource(this.song);
         songSource.connect(this.gain);
+
+        while (container.hasChildNodes()) {
+            container.removeChild(container.children[0]);
+        }
+        this.song.controls = true;
+        container.appendChild(this.song);
 
         // setup analyser
         this.analyser = this.context.createAnalyser();

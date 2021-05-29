@@ -71,6 +71,8 @@ function getMusicPath(): string | undefined {
  */
 function prepareSong() {
 
+    const audioContainer = document.getElementById('audio') as HTMLElement;
+
     if (typeof AudioHandler.song !== 'undefined') {
         AudioHandler.song.pause();
         AudioHandler.song.currentTime = 0;
@@ -79,7 +81,7 @@ function prepareSong() {
     const path = getMusicPath();
     if (typeof path !== "undefined") {
         // music changed
-        AudioHandler.init(path);
+        AudioHandler.init(audioContainer, path);
     }
 
     return typeof path !== 'undefined';

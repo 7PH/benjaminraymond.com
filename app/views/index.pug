@@ -106,6 +106,9 @@ html
                     each item in data.musics
                         option(value=item.path)= item.title
 
+            section#section-audio.animated-slow.outofscreen
+                div#audio
+            
             section#section-links.animated-slow.outofscreen
                 each item in data.links
                     if item.type === 'separator'
