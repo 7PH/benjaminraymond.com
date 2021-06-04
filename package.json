@@ -7,7 +7,7 @@
     "types": "./docs/main.d.ts",
     "scripts": {
         "clean": "rm -rf ./docs/*;",
-        "build": "npm run clean; gulp;",
+        "build": "npm run clean; gulp; echo -n 'benjaminraymond.com' > docs/CNAME",
         "dev": "http-server ./docs/",
         "deploy": "sh ./scripts/deploy.sh"
     },

@@ -148,6 +148,7 @@ header {
         background-color: #111111;
         color: white;
         font-family: 'Kalam';
+        max-width: 100%;
     }
 }
 
@@ -164,7 +165,7 @@ header {
     audio {
         width: 100%;
         height: 30px;
-        max-width: 400px;
+        max-width: 280px;
     }
 }
 
@@ -235,6 +236,14 @@ header {
 
 }
 
+@media screen and (max-width: 870px) {
+    #section-meta {
+        bottom: 40px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
 @media screen and (max-width: 745px) {
     #page-title > h1 {
         font-size: 120% !important;
@@ -251,6 +260,13 @@ header {
         margin-top: 25px!important;
     }
 }
+
+@media screen and (max-width: 440px){
+    #section-links {
+        bottom: 80px;
+    }
+}
+
 
 @media screen and (max-width: 360px){
     #page-title > h1 {
