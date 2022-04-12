@@ -1,7 +1,7 @@
 
 
-.start-overlay {
-    z-index: 10;
+.overlay {
+    z-index: -1;
     font-family: Kalam,serif;
     font-size: 30px;
     background-color: rgba(0, 0, 0, 0.35);

@@ -7,7 +7,7 @@ class StartOverlay extends React.Component {
     render() {
         return (
             <div
-                className='overlay position-fixed w-100 h-100 d-flex flex-column justify-content-center text-center'
+                className='start-overlay position-fixed w-100 h-100 d-flex flex-column justify-content-center text-center top-0'
                 onClick={this.props.onSkip}
             >
                 click to start

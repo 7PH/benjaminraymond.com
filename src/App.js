@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import StartOverlay from './components/StartOverlay';
+import VizOverlay from './components/VizOverlay';
 import IntroSection from './components/section/IntroSection';
 import ProjectsSection from './components/section/ProjectsSection';
 import ContactSection from './components/section/ContactSection';
@@ -33,7 +34,7 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Shown all sections
         if (! prevState.seeAllSections && this.state.seeAllSections) {
-            window.scrollTo(0, 200);
+            window.scrollTo(0, window.innerHeight / 2);
         }
     }
 
@@ -43,7 +44,7 @@ class App extends React.Component {
             <div>
 
                 { ! this.state.overlaySkipped && 
-                    <StartOverlay className="overlay" onSkip={this.skipOverlay.bind(this)} />
+                    <StartOverlay onSkip={this.skipOverlay.bind(this)} />
                 }
                 
                 <IntroSection
@@ -59,6 +60,8 @@ class App extends React.Component {
                 { this.state.seeAllSections && 
                     <ContactSection />
                 }
+
+                <VizOverlay overlaySkipped={this.state.overlaySkipped} />
             </div>
         );
     }
