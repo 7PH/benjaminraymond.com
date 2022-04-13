@@ -11,6 +11,11 @@ class VizOverlay extends React.Component {
         this.animationContainerRef = React.createRef();
         this.audio = new Audio('./music.mp3');
         this.viz = null;
+
+        this.state = {
+            scrollOverhead: 200,
+            scrollRatio: 0
+        };
     }
 
     /**
@@ -22,6 +27,9 @@ class VizOverlay extends React.Component {
         document.addEventListener('scroll', event => {
             const volume = Math.max(0, 1 - (document.documentElement.scrollTop / window.innerHeight * 2));
             this.audio.volume = volume;
+
+            const scrollRatio = document.documentElement.scrollTop / (document.body.clientHeight - window.innerHeight);
+            this.setState({ ...this.state, scrollRatio });
         });
     }
 
@@ -35,7 +43,10 @@ class VizOverlay extends React.Component {
     
     render() {
         return (
-            <div className='overlay position-fixed w-100 h-100 d-flex flex-column justify-content-center text-center top-0'>
+            <div
+                className='viz-overlay position-fixed w-100'
+                style={{ height: `calc(100vh + ${this.state.scrollOverhead}px)`, top: - this.state.scrollRatio * this.state.scrollOverhead, }}
+            >
                 <div
                     id="animation-container"
                     className='animation-container w-100 h-100'

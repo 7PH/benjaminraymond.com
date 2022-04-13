@@ -1,27 +1,57 @@
 import React from 'react';
-
 import './IntroSection.scss';
 import MyTitle from '../util/MyTitle';
 
-
 class IntroSection extends React.Component {
 
-    onSeeMore() {
-        // this.audio.pause();
-        this.props.onSeeMore();
+    constructor(props) {
+        super(props);
+
+        // Duration in seconds before the first audio drop. Used for dramatic effect, so that the title and actions come on audio drop.
+        this.audioFirstDrop = 7;
+
+        this.state = {
+            myTitleTopPosition: -200,
+            seeMoreBottomPosition: -200,
+        };
     }
-    
+
+    moveElements() {
+        setTimeout(() => {
+            this.setState({
+                ...this.state,
+                myTitleTopPosition: 0,
+                seeMoreBottomPosition: 0,
+            });
+        }, this.audioFirstDrop * 1000);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.overlaySkipped && ! prevProps.overlaySkipped) {
+            this.moveElements();
+        }
+    }
+
     render() {
+        
         return (
             <div className='section position-relative'>
 
                 { this.props.overlaySkipped && 
-                    <MyTitle className='title position-absolute w-100 text-center' />
+                    <div
+                        style={{ top: this.state.myTitleTopPosition }}
+                        className='smooth position-absolute w-100 text-center'
+                    >
+                        <MyTitle className='title' />
+                    </div>
                 }
 
                 { this.props.overlaySkipped && this.props.showSeeMore && 
-                    <div className='see-more position-absolute bottom-0 w-100 text-center mb-3'>
-                        <button onClick={this.onSeeMore.bind(this)} className='btn btn-sm btn-primary'>See more</button>
+                    <div
+                        style={{ bottom: this.state.seeMoreBottomPosition }}
+                        className='smooth position-fixed w-100 text-center pb-4'
+                    >
+                        <button onClick={this.props.onSeeMore} className='btn btn-outline-primary'>See more</button>
                     </div>
                 }
             </div>

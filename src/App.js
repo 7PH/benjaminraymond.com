@@ -3,6 +3,7 @@ import './App.css';
 import StartOverlay from './components/StartOverlay';
 import VizOverlay from './components/VizOverlay';
 import IntroSection from './components/section/IntroSection';
+import QuoteSection from './components/section/QuoteSection';
 import ProjectsSection from './components/section/ProjectsSection';
 import ContactSection from './components/section/ContactSection';
 
@@ -34,7 +35,7 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Shown all sections
         if (! prevState.seeAllSections && this.state.seeAllSections) {
-            window.scrollTo(0, window.innerHeight / 2);
+            window.scrollTo(0, window.innerHeight / 1.5);
         }
     }
 
@@ -52,6 +53,10 @@ class App extends React.Component {
                     showSeeMore={! this.state.seeAllSections}
                     onSeeMore={this.seeAllSections.bind(this)}
                 />
+
+                { this.state.seeAllSections && 
+                    <QuoteSection />
+                }
 
                 { this.state.seeAllSections && 
                     <ProjectsSection />

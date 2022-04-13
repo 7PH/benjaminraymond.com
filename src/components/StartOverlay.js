@@ -1,19 +1,27 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
+
 import './StartOverlay.scss';
 
 
-class StartOverlay extends React.Component {
+function StartOverlay(props) {
 
-    render() {
-        return (
+    const styles = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+        config: { duration: 500 },
+    });
+
+    return (
+        <animated.div style={styles}>
             <div
                 className='start-overlay position-fixed w-100 h-100 d-flex flex-column justify-content-center text-center top-0'
-                onClick={this.props.onSkip}
+                onClick={props.onSkip}
             >
                 click to start
             </div>
-        );
-    }
+        </animated.div>
+    );
 }
 
 export default StartOverlay;
