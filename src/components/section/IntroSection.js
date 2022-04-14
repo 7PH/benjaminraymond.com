@@ -11,7 +11,7 @@ class IntroSection extends React.Component {
         this.audioFirstDrop = 7;
 
         this.state = {
-            myTitleTopPosition: -200,
+            myTitleTopPosition: -400,
             seeMoreBottomPosition: -200,
         };
     }
