@@ -25,7 +25,7 @@ class VizOverlay extends React.Component {
         this.viz = new PowerAudio.Viz({ container: this.animationContainerRef.current, source: this.audio, startAnalysis: false });
 
         document.addEventListener('scroll', event => {
-            const volume = Math.max(0, 1 - (document.documentElement.scrollTop / window.innerHeight * 2));
+            const volume = Math.max(0.1, 1 - (document.documentElement.scrollTop / window.innerHeight));
             this.audio.volume = volume;
 
             const scrollRatio = document.documentElement.scrollTop / (document.body.clientHeight - window.innerHeight);
