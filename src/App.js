@@ -1,4 +1,5 @@
 import React from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import './App.css';
 import StartOverlay from './components/StartOverlay';
 import VizOverlay from './components/VizOverlay';
@@ -35,14 +36,14 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Shown all sections
         if (! prevState.seeAllSections && this.state.seeAllSections) {
-            window.scrollTo(0, window.innerHeight / 1.5);
+            window.scrollTo(0, window.innerHeight);
         }
     }
 
 
     render() {
         return (
-            <div>
+            <ParallaxProvider>
 
                 { ! this.state.overlaySkipped && 
                     <StartOverlay onSkip={this.skipOverlay.bind(this)} />
@@ -67,7 +68,7 @@ class App extends React.Component {
                 }
 
                 <VizOverlay overlaySkipped={this.state.overlaySkipped} />
-            </div>
+            </ParallaxProvider>
         );
     }
 }
