@@ -1,4 +1,5 @@
 import { Parallax } from 'react-scroll-parallax';
+import { isMobile } from 'react-device-detect';
 import './ProjectsSection.scss';
 
 
@@ -9,7 +10,7 @@ function ProjectsSection() {
             <h1>Projects</h1>
 
             <div className='row justify-content-center'>
-                <Parallax translateX={['-20px', '20px']} className='col-lg-4 col-md-6'>
+                <Parallax translateX={isMobile ? [0, 0] : ['-20px', '20px']} className='col-lg-4 col-md-6'>
                     <div className='card bg-dark my-3'>
                         <div className="card-body">
                             <h5 className="card-title">SkyChat</h5>
@@ -18,7 +19,7 @@ function ProjectsSection() {
                         </div>
                     </div>
                 </Parallax>
-                <Parallax translateX={['-20px', '20px']} translateY={['5px', '-5px']} className='col-lg-4 col-md-6'>
+                <Parallax translateX={isMobile ? [0, 0] : ['-20px', '20px']} translateY={['5px', '-5px']} className='col-lg-4 col-md-6'>
                     <div className='card bg-dark my-3'>
                         <div className="card-body">
                             <h5 className="card-title">RisiBank</h5>
@@ -29,7 +30,7 @@ function ProjectsSection() {
                 </Parallax>
             </div>
             <div className='row justify-content-center'>
-                <Parallax translateX={['20px', '-20px']} className='col-lg-4 col-md-6'>
+                <Parallax translateX={isMobile ? [0, 0] : ['20px', '-20px']} className='col-lg-4 col-md-6'>
                     <div className='card bg-dark my-3'>
                         <div className="card-body">
                             <h5 className="card-title">PowerAudio</h5>
@@ -38,7 +39,7 @@ function ProjectsSection() {
                         </div>
                     </div>
                 </Parallax>
-                <Parallax translateX={['20px', '-20px']} className='col-lg-4 col-md-6'>
+                <Parallax translateX={isMobile ? [0, 0] : ['20px', '-20px']} className='col-lg-4 col-md-6'>
                     <div className='card bg-dark my-3'>
                         <div className="card-body">
                             <h5 className="card-title">domaTeX</h5>
