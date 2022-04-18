@@ -7,7 +7,8 @@ function QuoteSection() {
     return (
         <div className='section d-flex flex-column justify-content-center text-center px-4'>
             <Parallax
-                rotateZ={isMobile ? [0, 0] : [-180, 180]}
+                rotateZ={[-180, 180]}
+                disabled={isMobile}
             >
                 <p className='col-md-6 m-auto fs-4'>
                     Hi 👋<br/>
