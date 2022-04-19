@@ -1,4 +1,4 @@
-## Interactive curriculum
+## Benjamin Raymond - Portfolio
 
 This repository holds the code of my portfolio website located at https://benjaminraymond.com
 
