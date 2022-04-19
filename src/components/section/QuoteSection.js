@@ -11,8 +11,9 @@ function QuoteSection() {
                 disabled={isMobile}
             >
                 <p className='col-md-6 m-auto fs-4'>
-                    Hi 👋<br/>
-                    I am a conscientious person with expertise in using a wide range of technologies and languages to design full stack web applications that are polished, scalable and secured. I put the emphasis on designing well-thought user experiences and polished UIs.
+                    Hi 👋<br />
+                    I am a conscientious person with expertise in using a wide range of technologies to design full stack web applications that are polished, scalable and secured. <br />
+                    I like to be involved in the entire product development chain and put the emphasis on designing well-thought user experiences and polished UIs.
                 </p>
             </Parallax>
         </div>
