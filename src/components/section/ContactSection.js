@@ -5,17 +5,15 @@ import MyTitle from '../util/MyTitle';
 function ContactSection() {
     return (
         <div className='section section-half'>
-            <div className='row h-100'>
-                <div className='col-md-6'>
-                </div>
-                <div className='col-md-5 d-flex flex-column justify-content-end mb-5'>
+            <div className='w-full h-full grid grid-cols-2 gap-4'>
+                <div className='col-start-1 col-span-2 xl:col-start-2 xl:col-span-1 flex flex-col justify-end mb-5'>
 
                     <MyTitle className='text-center' />
 
-                    <div className='btn-group mx-5 mt-4'>
-                        <a className='btn btn-outline-secondary' target='_blank' href='https://github.com/7PH' rel='noreferrer'>GitHub</a>
-                        <a className='btn btn-outline-primary' target='_blank' href='https://www.linkedin.com/in/b-raymond/' rel='noreferrer'>LinkedIn</a>
-                        <a className='btn btn-outline-danger' target='_blank' href='mailto:b.raymond@protonmail.com' rel='noreferrer'>Email</a>
+                    <div className='mx-5 mt-4 text-center'>
+                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-pink-500 text-white rounded-full shadow-sm' target='_blank' href='https://github.com/7PH' rel='noreferrer'>GitHub</a>
+                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm' target='_blank' href='https://www.linkedin.com/in/b-raymond/' rel='noreferrer'>LinkedIn</a>
+                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-violet-500 text-white rounded-full shadow-sm' target='_blank' href='mailto:b.raymond@protonmail.com' rel='noreferrer'>Email</a>
                     </div>
                 </div>
             </div>

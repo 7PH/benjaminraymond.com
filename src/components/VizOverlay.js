@@ -44,12 +44,12 @@ class VizOverlay extends React.Component {
     render() {
         return (
             <div
-                className='viz-overlay position-fixed w-100'
+                className='viz-overlay -z-10 fixed w-full'
                 style={{ height: `calc(100vh + ${this.state.scrollOverhead}px)`, top: - this.state.scrollRatio * this.state.scrollOverhead, }}
             >
                 <div
                     id="animation-container"
-                    className='animation-container w-100 h-100'
+                    className='animation-container w-full h-full'
                     ref={this.animationContainerRef}
                 />
             </div>

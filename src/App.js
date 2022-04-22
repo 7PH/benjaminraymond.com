@@ -36,7 +36,11 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         // Shown all sections
         if (! prevState.seeAllSections && this.state.seeAllSections) {
-            window.scrollTo(0, window.innerHeight);
+            window.scrollTo({
+                top: window.innerHeight,
+                left: 0,
+                behavior: 'smooth'
+            });
         }
     }
 

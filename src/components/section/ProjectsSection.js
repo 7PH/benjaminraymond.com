@@ -25,60 +25,56 @@ class ProjectsSection extends React.Component {
 
     render() {
         return (
-            <div ref={this.containerRef} className='section d-flex flex-column justify-content-center text-center px-4'>
+            <div ref={this.containerRef} className='section flex flex-col justify-center text-center px-4'>
 
                 <h1>Featured Projects</h1>
 
-                <div className='row justify-content-center'>
-                    <Parallax
-                        translateX={[-100, 0]}
-                        translateY={[-100, 0]}
-                        startScroll={this.state.offsetHeight}
-                        endScroll={this.state.offsetHeight + window.innerHeight}
-                        disabled={isMobile}
-                        className='col-lg-4 col-md-6'
-                    >
-                        <div className='card bg-dark mt-4'>
-                            <div className="card-body">
-                                <h5 className="card-title">SkyChat</h5>
-                                <p className="card-text">Open source virtual cinema platform</p>
-                                <a href="https://github.com/skychatorg/skychat" target='_blank' rel="noreferrer" className="btn btn-primary">See project</a>
-                            </div>
+                <div className='w-full max-w-4xl mx-auto grid grid-cols-2 gap-4 items-center'>
+
+                    <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
+                        <p className="text-lg font-bold">SkyChat</p>
+                        <p>Open source virtual cinema platform</p>
+                        <div className='mt-2'>
+                            <a
+                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                href="https://github.com/skychatorg/skychat"
+                                target='_blank'
+                                rel="noreferrer"
+                            >
+                                See project
+                            </a>
                         </div>
-                    </Parallax>
-                    <Parallax
-                        translateX={[100, 0]}
-                        translateY={[-100, 0]}
-                        startScroll={this.state.offsetHeight}
-                        endScroll={this.state.offsetHeight + window.innerHeight}
-                        disabled={isMobile}
-                        className='col-lg-4 col-md-6'
-                    >
-                        <div className='card bg-dark mt-4'>
-                            <div className="card-body">
-                                <h5 className="card-title">RisiBank</h5>
-                                <p className="card-text">Community-driven humorous image bank</p>
-                                <a href="https://risibank.fr" target='_blank' rel="noreferrer" className="btn btn-primary">Check out</a>
-                            </div>
+                    </div>
+
+                    <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
+                        <p className="text-lg font-bold">RisiBank</p>
+                        <p>Community-driven humorous image bank</p>
+                        <div className='mt-2'>
+                            <a
+                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                href="https://risibank.fr"
+                                target='_blank'
+                                rel="noreferrer"
+                            >
+                                Check out
+                            </a>
                         </div>
-                    </Parallax>
-                </div>
-                <div className='row justify-content-center'>
-                    <Parallax
-                        translateY={[400, 0]}
-                        startScroll={this.state.offsetHeight}
-                        endScroll={this.state.offsetHeight + window.innerHeight}
-                        disabled={isMobile}
-                        className='col-lg-4 col-md-6'
-                    >
-                        <div className='card bg-dark mt-4'>
-                            <div className="card-body">
-                                <h5 className="card-title">PowerAudio</h5>
-                                <p className="card-text">A unique audio viz library you can integrate on the web</p>
-                                <a href="https://github.com/7PH/poweraudio" target='_blank' rel="noreferrer" className="btn btn-primary">See project</a>
-                            </div>
+                    </div>
+
+                    <div className="col-span-2 bg-slate-900 rounded-md px-5 py-4">
+                        <p className="text-lg font-bold">PowerAudio</p>
+                        <p>A unique audio viz library you can integrate on the web</p>
+                        <div className='mt-2'>
+                            <a
+                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                href="https://github.com/7PH/poweraudio"
+                                target='_blank'
+                                rel="noreferrer"
+                            >
+                                See project
+                            </a>
                         </div>
-                    </Parallax>
+                    </div>
                 </div>
             </div>
         );

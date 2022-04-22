@@ -35,12 +35,12 @@ class IntroSection extends React.Component {
     render() {
         
         return (
-            <div className='section position-relative'>
+            <div className='section relative'>
 
                 { this.props.overlaySkipped && 
                     <div
                         style={{ top: this.state.myTitleTopPosition }}
-                        className='smooth position-absolute w-100 text-center'
+                        className='smooth absolute w-full text-center'
                     >
                         <MyTitle className='title' />
                     </div>
@@ -49,9 +49,11 @@ class IntroSection extends React.Component {
                 { this.props.overlaySkipped && this.props.showSeeMore && 
                     <div
                         style={{ bottom: this.state.seeMoreBottomPosition }}
-                        className='smooth position-fixed w-100 text-center pb-4'
+                        className='smooth fixed w-full text-center pb-4'
                     >
-                        <button onClick={this.props.onSeeMore} className='btn btn-outline-primary'>See more</button>
+                        <button onClick={this.props.onSeeMore} className='px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm'>
+                            See more
+                        </button>
                     </div>
                 }
             </div>
