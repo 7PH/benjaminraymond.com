@@ -3,7 +3,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 body, html {
     margin: 0;
     padding: 0;
@@ -51,4 +50,9 @@ body,
 
 .section-half {
     height: calc(55vh);
+}
+
+// Button
+.btn {
+    @apply text-white rounded-full py-1 px-4;
 }
