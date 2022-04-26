@@ -52,7 +52,27 @@ body,
     height: calc(55vh);
 }
 
-// Button
+// Buttons
 .btn {
-    @apply text-white rounded-full py-1 px-4;
+    @apply rounded-full px-3 py-1 font-semibold text-sm shadow-sm ;
+
+    &.btn-blue {
+        @apply text-white bg-blue-500 border-2 border-blue-500 hover:bg-blue-400 hover:border-white ;
+    }
+
+    &.btn-pink {
+        @apply text-white bg-pink-500 border-2 border-pink-500 hover:bg-pink-400 hover:border-white ;
+    }
+
+    &.btn-violet {
+        @apply text-white bg-violet-500 border-2 border-violet-500 hover:bg-violet-400 hover:border-white ;
+    }
+}
+
+
+a.btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    padding-top: 2px;
 }

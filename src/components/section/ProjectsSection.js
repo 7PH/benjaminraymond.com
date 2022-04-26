@@ -34,9 +34,9 @@ class ProjectsSection extends React.Component {
                     <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
                         <p className="text-lg font-bold">SkyChat</p>
                         <p>Open source virtual cinema platform</p>
-                        <div className='mt-2'>
+                        <div className='mt-4'>
                             <a
-                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                className="btn btn-pink"
                                 href="https://github.com/skychatorg/skychat"
                                 target='_blank'
                                 rel="noreferrer"
@@ -49,9 +49,9 @@ class ProjectsSection extends React.Component {
                     <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
                         <p className="text-lg font-bold">RisiBank</p>
                         <p>Community-driven humorous image bank</p>
-                        <div className='mt-2'>
+                        <div className='mt-4'>
                             <a
-                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                className="btn btn-blue"
                                 href="https://risibank.fr"
                                 target='_blank'
                                 rel="noreferrer"
@@ -64,9 +64,9 @@ class ProjectsSection extends React.Component {
                     <div className="col-span-2 bg-slate-900 rounded-md px-5 py-4">
                         <p className="text-lg font-bold">PowerAudio</p>
                         <p>A unique audio viz library you can integrate on the web</p>
-                        <div className='mt-2'>
+                        <div className='mt-4'>
                             <a
-                                className="px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm"
+                                className="btn btn-violet"
                                 href="https://github.com/7PH/poweraudio"
                                 target='_blank'
                                 rel="noreferrer"

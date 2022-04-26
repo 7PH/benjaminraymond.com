@@ -11,9 +11,9 @@ function ContactSection() {
                     <MyTitle className='text-center' />
 
                     <div className='mx-5 mt-4 text-center'>
-                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-pink-500 text-white rounded-full shadow-sm' target='_blank' href='https://github.com/7PH' rel='noreferrer'>GitHub</a>
-                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm' target='_blank' href='https://www.linkedin.com/in/b-raymond/' rel='noreferrer'>LinkedIn</a>
-                        <a className='mx-2 px-4 py-2 font-semibold text-sm bg-violet-500 text-white rounded-full shadow-sm' target='_blank' href='mailto:b.raymond@protonmail.com' rel='noreferrer'>Email</a>
+                        <a className='mx-2 btn btn-pink' target='_blank' href='https://github.com/7PH' rel='noreferrer'>GitHub</a>
+                        <a className='mx-2 btn btn-blue' target='_blank' href='https://www.linkedin.com/in/b-raymond/' rel='noreferrer'>LinkedIn</a>
+                        <a className='mx-2 btn btn-violet' target='_blank' href='mailto:b.raymond@protonmail.com' rel='noreferrer'>Email</a>
                     </div>
                 </div>
             </div>

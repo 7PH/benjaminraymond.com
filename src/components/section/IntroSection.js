@@ -9,6 +9,7 @@ class IntroSection extends React.Component {
 
         // Duration in seconds before the first audio drop. Used for dramatic effect, so that the title and actions come on audio drop.
         this.audioFirstDrop = 7;
+        this.audioFirstDrop = 1;
 
         this.state = {
             myTitleTopPosition: -400,
@@ -51,7 +52,7 @@ class IntroSection extends React.Component {
                         style={{ bottom: this.state.seeMoreBottomPosition }}
                         className='smooth fixed w-full text-center pb-4'
                     >
-                        <button onClick={this.props.onSeeMore} className='px-4 py-2 font-semibold text-sm bg-blue-500 text-white rounded-full shadow-sm'>
+                        <button onClick={this.props.onSeeMore} className='btn btn-blue'>
                             See more
                         </button>
                     </div>
