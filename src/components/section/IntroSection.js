@@ -9,7 +9,6 @@ class IntroSection extends React.Component {
 
         // Duration in seconds before the first audio drop. Used for dramatic effect, so that the title and actions come on audio drop.
         this.audioFirstDrop = 7;
-        this.audioFirstDrop = 1;
 
         this.state = {
             myTitleTopPosition: -400,
