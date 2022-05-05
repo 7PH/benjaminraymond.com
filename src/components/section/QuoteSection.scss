@@ -9,13 +9,13 @@
 }
 
 @keyframes float {
-	0% {
-		transform: rotate(45deg) translatex(0px) translatey(0px);
-	}
-	50% {
-		transform: rotate(45deg) translatex(-5px) translatey(-5px);
-	}
-	100% {
-		transform: rotate(45deg) translatex(0px) translatey(0px);
-	}
+    0% {
+        transform: rotate(45deg) translatex(0px) translatey(0px);
+    }
+    50% {
+        transform: rotate(45deg) translatex(-5px) translatey(-5px);
+    }
+    100% {
+        transform: rotate(45deg) translatex(0px) translatey(0px);
+    }
 }
