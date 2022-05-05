@@ -52,20 +52,37 @@ body,
     height: calc(55vh);
 }
 
+// Shaking
+.shaking-element {
+    animation-name: shake-animation;
+    animation-delay: -.50s;
+    animation-duration: 0.30s;
+    transform-origin: 50% 20%;
+}
+@keyframes shake-animation {
+    0% {    transform:  rotate(-1deg); animation-timing-function: ease-in; }
+    50% {   transform:  rotate(1.5deg); animation-timing-function: ease-out; }
+}
+
 // Buttons
 .btn {
-    @apply rounded-full px-3 py-1 font-semibold text-sm shadow-sm ;
+    @apply relative rounded-full px-3 py-1 font-semibold text-sm shadow-sm;
+    transition: all 0.2s ease-in-out;
 
-    &.btn-blue {
-        @apply text-white bg-blue-500 border-2 border-blue-500 hover:bg-blue-400 hover:border-white ;
+    &:hover {
+        transform: scale(1.05);
     }
 
-    &.btn-pink {
-        @apply text-white bg-pink-500 border-2 border-pink-500 hover:bg-pink-400 hover:border-white ;
+    &.btn-capri {
+        @apply text-white bg-capri border-2 border-capri hover:border-white;
     }
 
-    &.btn-violet {
-        @apply text-white bg-violet-500 border-2 border-violet-500 hover:bg-violet-400 hover:border-white ;
+    &.btn-magenta-crayola {
+        @apply text-white bg-magenta-crayola border-2 border-magenta-crayola hover:border-white;
+    }
+
+    &.btn-amethyst {
+        @apply text-white bg-amethyst border-2 border-amethyst hover:border-white;
     }
 }
 

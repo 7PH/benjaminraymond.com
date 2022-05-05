@@ -10,7 +10,7 @@ function QuoteSection() {
                 rotateZ={[-180, 180]}
                 disabled={isMobile}
             >
-                <p className='w-full mx-auto max-w-4xl text-2xl'>
+                <p className='w-full mx-auto max-w-4xl text-md md:text-2xl'>
                     Hi 👋<br />
                     I am a conscientious software engineer with expertise in using a wide range of technologies to design polished, scalable and secure full stack web applications.
                     I like to be involved in the entire product development chain and put the emphasis on designing well-thought-out user experiences and interfaces.
@@ -21,7 +21,7 @@ function QuoteSection() {
                     opacity={[1, 0]}
                     disabled={isMobile}
                 >
-                    <i class="arrow-down border-fuchsia-400"></i>
+                    <i className="arrow-down border-capri"></i>
                 </Parallax>
             </div>
         </div>

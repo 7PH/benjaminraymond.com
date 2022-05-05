@@ -27,16 +27,20 @@ class ProjectsSection extends React.Component {
         return (
             <div ref={this.containerRef} className='section flex flex-col justify-center text-center px-4'>
 
-                <h1>Featured Projects</h1>
+                <h1 className='mb-4 text-4xl md:text-6xl md:mb-8'>Featured Projects</h1>
 
-                <div className='w-full max-w-4xl mx-auto grid grid-cols-2 gap-4 items-center'>
+                <div className='w-full max-w-4xl mx-auto grid grid-cols-2 gap-4 items-center text-left'>
 
-                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4">
-                        <p className="text-lg font-bold">SkyChat</p>
-                        <p>Open source virtual cinema platform</p>
-                        <div className='mt-4'>
+                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4 flex flex-col md:flex-row">
+                        <p className="text-lg font-bold" style={{ minWidth: 140, }}>
+                            SkyChat
+                        </p>
+                        <p className='flex-1 text-lg'>
+                            Open source virtual cinema platform
+                        </p>
+                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
                             <a
-                                className="btn btn-pink"
+                                className="ml-4 btn btn-magenta-crayola"
                                 href="https://github.com/skychatorg/skychat"
                                 target='_blank'
                                 rel="noreferrer"
@@ -46,12 +50,16 @@ class ProjectsSection extends React.Component {
                         </div>
                     </div>
 
-                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4">
-                        <p className="text-lg font-bold">RisiBank</p>
-                        <p>Community-driven humorous image bank</p>
-                        <div className='mt-4'>
+                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4 flex flex-col md:flex-row">
+                        <p className="text-lg font-bold" style={{ minWidth: 140, }}>
+                            RisiBank
+                        </p>
+                        <p className='flex-1 text-lg'>
+                            Community-driven humorous image bank
+                        </p>
+                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
                             <a
-                                className="btn btn-blue"
+                                className="ml-4 btn btn-capri"
                                 href="https://risibank.fr"
                                 target='_blank'
                                 rel="noreferrer"
@@ -61,12 +69,16 @@ class ProjectsSection extends React.Component {
                         </div>
                     </div>
 
-                    <div className="col-span-2 bg-slate-900 rounded-md px-5 py-4">
-                        <p className="text-lg font-bold">PowerAudio</p>
-                        <p>A unique audio viz library you can integrate on the web</p>
-                        <div className='mt-4'>
+                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4 flex flex-col md:flex-row">
+                        <p className="text-lg font-bold" style={{ minWidth: 140, }}>
+                            PowerAudio
+                        </p>
+                        <p className='flex-1 text-lg'>
+                            Innovative audio visualization library
+                        </p>
+                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
                             <a
-                                className="btn btn-violet"
+                                className="ml-4 btn btn-amethyst"
                                 href="https://github.com/7PH/poweraudio"
                                 target='_blank'
                                 rel="noreferrer"
