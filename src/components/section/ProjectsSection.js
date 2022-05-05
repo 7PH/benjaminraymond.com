@@ -31,7 +31,7 @@ class ProjectsSection extends React.Component {
 
                 <div className='w-full max-w-4xl mx-auto grid grid-cols-2 gap-4 items-center'>
 
-                    <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
+                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4">
                         <p className="text-lg font-bold">SkyChat</p>
                         <p>Open source virtual cinema platform</p>
                         <div className='mt-4'>
@@ -46,7 +46,7 @@ class ProjectsSection extends React.Component {
                         </div>
                     </div>
 
-                    <div className="bg-slate-900 col-span-2 md:col-span-1 rounded-md px-5 py-4">
+                    <div className="bg-slate-900 col-span-2 rounded-md px-5 py-4">
                         <p className="text-lg font-bold">RisiBank</p>
                         <p>Community-driven humorous image bank</p>
                         <div className='mt-4'>
