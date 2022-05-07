@@ -51,7 +51,7 @@ class IntroSection extends React.Component {
                         style={{ bottom: this.state.seeMoreBottomPosition }}
                         className='smooth fixed w-full text-center pb-4'
                     >
-                        <button onClick={this.props.onSeeMore} className='btn btn-capri'>
+                        <button onClick={this.props.onSeeMore} className='btn btn-capri text-xl'>
                             See more
                         </button>
                     </div>

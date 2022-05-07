@@ -6,7 +6,7 @@ function ContactSection() {
     return (
         <div className='section section-half'>
             <div className='w-full h-full grid grid-cols-2 gap-4'>
-                <div className='col-start-1 col-span-2 xl:col-start-2 xl:col-span-1 flex flex-col justify-end mb-5'>
+                <div className='col-start-1 col-span-2 flex flex-col justify-end mb-5'>
 
                     <MyTitle className='text-center' />
 

@@ -15,7 +15,7 @@ function StartOverlay(props) {
     return (
         <animated.div style={styles}>
             <div
-                className='start-overlay z-10 fixed w-full h-full bg-black/25 flex flex-col justify-center text-center text-2xl select-none cursor-pointer'
+                className='start-overlay z-10 fixed w-full h-full bg-black/25 flex flex-col justify-center text-center text-4xl select-none cursor-pointer'
                 onClick={props.onSkip}
             >
                 click to start
