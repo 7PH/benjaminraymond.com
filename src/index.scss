@@ -66,7 +66,7 @@ body,
 
 // Buttons
 .btn {
-    @apply relative rounded-full px-3 py-1 font-semibold text-sm shadow-sm;
+    @apply relative rounded-full px-3 py-1 font-semibold text-sm shadow-sm text-center;
     transition: all 0.2s ease-in-out;
 
     &:hover {

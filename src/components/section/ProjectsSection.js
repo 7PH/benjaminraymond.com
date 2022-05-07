@@ -38,9 +38,9 @@ class ProjectsSection extends React.Component {
                         <p className='flex-1 text-lg'>
                             Open source virtual cinema platform
                         </p>
-                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
+                        <div className="text-right mt-2 md:mt-0" style={{ width: 120 }}>
                             <a
-                                className="ml-4 btn btn-magenta-crayola"
+                                className="btn btn-magenta-crayola w-full"
                                 href="https://github.com/skychatorg/skychat"
                                 target='_blank'
                                 rel="noreferrer"
@@ -57,9 +57,9 @@ class ProjectsSection extends React.Component {
                         <p className='flex-1 text-lg'>
                             Community-driven humorous image bank
                         </p>
-                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
+                        <div className="text-right mt-2 md:mt-0" style={{ width: 120 }}>
                             <a
-                                className="ml-4 btn btn-capri"
+                                className="btn btn-capri w-full"
                                 href="https://risibank.fr"
                                 target='_blank'
                                 rel="noreferrer"
@@ -76,9 +76,9 @@ class ProjectsSection extends React.Component {
                         <p className='flex-1 text-lg'>
                             Innovative audio visualization library
                         </p>
-                        <div className="text-right mt-2 md:mt-0" style={{ minWidth: 160 }}>
+                        <div className="text-right mt-2 md:mt-0" style={{ width: 120 }}>
                             <a
-                                className="ml-4 btn btn-amethyst"
+                                className="btn btn-amethyst w-full"
                                 href="https://github.com/7PH/poweraudio"
                                 target='_blank'
                                 rel="noreferrer"
