@@ -1,4 +1,4 @@
-import React, { useEffect, createRef } from 'react';
+import React, { createRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { PowerGlitch } from 'powerglitch';
 
@@ -29,9 +29,6 @@ function StartOverlay(props) {
                     start: 0,
                     end: 1,
                 },
-                slice: {
-                    count: 8,
-                },
             }
         );
         setTimeout(props.onSkip, 1000);
@@ -43,8 +40,8 @@ function StartOverlay(props) {
                 className='start-overlay z-10 fixed w-full h-full bg-black/25 flex flex-col justify-center text-center text-4xl select-none cursor-pointer'
                 onClick={onSkip}
             >
-                <div ref={ref} className='text-center '>
-                    click to start
+                <div className='text-center flex justify-center w-full'>
+                    <div ref={ref} className='w-fit'>click to start</div>
                 </div>
             </div>
         </animated.div>
