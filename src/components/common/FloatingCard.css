@@ -1,0 +1,34 @@
+.card:hover {
+    animation-play-state: paused;
+}
+.card {
+    @apply rounded-2xl cursor-pointer bg-gray-800 transition transition-all select-none;
+    background: #12c2e9;
+    background: -webkit-linear-gradient(to bottom right, #f64f59, #c471ed, #12c2e9);
+    background: linear-gradient(to bottom right, #f64f59, #c471ed, #12c2e9);
+	background-size: 400% 400%;
+    box-shadow: 0 0 40px 2px #c471ed30;
+}
+.card.floating {
+    animation-name: card-floating;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.card.variant-0 {
+    animation-delay: 0s;
+}
+.card.variant-1 {
+    animation-delay: -1s;
+}
+.card.variant-2 {
+    animation-delay: -2s;
+}
+.card.variant-3 {
+    animation-delay: -3s;
+}
+@keyframes card-floating {
+    0% { transform: translate3d(0, 0, 0); background-position: 0% 50%; }
+    50% { transform: translate3d(0, -10px, 0); background-position: 100% 50%; }
+    100% { transform: translate3d(0, 0, 0); background-position: 0% 50%; }
+}
