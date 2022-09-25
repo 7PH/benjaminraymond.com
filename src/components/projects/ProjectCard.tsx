@@ -11,7 +11,10 @@ export type PropsType = {
 
 function ProjectCard(props: PropsType) {
     return (
-        <FloatingCard variant={props.variant}>
+        <FloatingCard
+            variant={props.variant}
+            proximity={10}
+        >
             <div
                 onClick={() => window.open(props.link)}
                 className="p-4 max-w-[380px]"

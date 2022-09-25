@@ -66,7 +66,7 @@ function BackgroundViz() {
 
     return (
         <div
-            className="fixed h-screen w-screen -z-10 pointer-events-none"
+            className="fixed h-full w-full -z-10 pointer-events-none"
             style={{
                 height: `calc(100vh + ${scrollOverhead}px)`,
                 top: - scrollRatio * scrollOverhead,

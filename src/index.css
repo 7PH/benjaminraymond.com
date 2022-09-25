@@ -9,11 +9,9 @@
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
 }
 body, #root {
-    height: 100vh;
+    @apply h-full w-full;
 }
 
 body {
-    @apply bg-black text-black font-semibold;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    @apply bg-black text-black font-semibold overflow-x-hidden overflow-y-scroll;
 }

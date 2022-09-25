@@ -18,8 +18,8 @@ function App() {
     };
 
     return (
-        <div className="relative">
-            <div className={classNames('opacity-100 transition-all duration-1000', {
+        <div className="relative h-full w-full">
+            <div className={classNames('h-full w-full opacity-100 transition-all duration-1000', {
                 '!opacity-25': darkenBackground,
             })}>
                 <BackgroundViz />

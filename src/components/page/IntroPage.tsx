@@ -27,9 +27,9 @@ function IntroPage(props: PropsType) {
     };
 
     return (
-        <div className="h-screen pt-[40vh] text-center">
+        <div className="fixed h-full w-full text-center bottom-0 md:bottom-auto md:top-[40vh]">
             <div
-                className={classNames('h-full flex flex-col md:flex-row justify-end md:justify-center gap-4 transition-all ease-[cubic-bezier(.86,-0.2,.83,.67)]', {
+                className={classNames('h-full flex flex-col md:flex-row pb-2 justify-end md:justify-center gap-4 transition-all ease-[cubic-bezier(.86,-0.2,.83,.67)]', {
                     'translate-y-[-100vh]': started,
                 })}
             >
