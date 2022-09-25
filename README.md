@@ -1,3 +1,3 @@
 ## Benjamin Raymond
 
-This repository holds the code of my portfolio website located at https://benjaminraymond.com
+Creative landing page show-casing my featured projects

@@ -8,7 +8,7 @@ function FooterSection() {
             <FloatingElement proximity={5}>
                 <div className="text-white text-center select-none text-right">
                     <div>
-                        <div className="text-6xl">Benjamin Raymond</div>
+                        <div className="text-4xl">Benjamin Raymond</div>
                         <div className="text-lg mt-4 flex gap-4 justify-end">
                             <a
                                 href="https://github.com/7PH"

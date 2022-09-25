@@ -1,33 +1,42 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { useHoverDirty, useMouse } from 'react-use';
-import './FloatingElement.css';
 
 
 /**
  * 
- * @param {Number} proximity Element proximity. Defaults to 20.
+ * @param {?Number} proximity Element proximity. Defaults to 20.
  * @returns 
  */
 function FloatingElement(props: { proximity?: number, children: ReactNode }) {
+    // Tracks mouse position related to this element
     const cardRef = useRef<HTMLDivElement>(null);
     const { elX, elY, elW, elH } = useMouse(cardRef);
+    
+    // CSS translate property applied to the floating element
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
+
+    // Whether this element is hovered
     const hovered = useHoverDirty(cardRef, true);
+
+    /**
+     * Update CSS translate property when mouse moved or hovered this element
+     */
     useEffect(() => {
-        const relativeX = (elX - elW / 2) / innerWidth;
-        const relativeY = (elY - elH / 2) / innerHeight;
+        // Get relativeX/Y factors related to how far the mouse is from this element
+        // Bounds these factors within [-1, 1]
+        const relativeX = Math.max(-1, Math.min(1, (elX - elW / 2) / innerWidth));
+        const relativeY = Math.max(-1, Math.min(1, (elY - elH / 2) / innerHeight));
+        // Compute general ratio to apply to the distance ratio
+        // When element is hovered, element moves less to optimize UX
         const proximity = (props.proximity || 10);
         const ratio = hovered ? Math.round(proximity * .25) : proximity;
-        setTranslate({
-            x: relativeX * ratio,
-            y: relativeY * ratio,
-        });
+        setTranslate({ x: relativeX * ratio, y: relativeY * ratio });
     }, [elX, elY, elW, elH, hovered]);
 
     return (
         <div
             ref={cardRef}
-            className="card-container transition-all ease-linear"
+            className="h-fit scale-[0.95] hover:scale-[1] transition-all ease-linear"
             style={{
                 'translate': translate.x + 'px ' + translate.y + 'px',
             }}

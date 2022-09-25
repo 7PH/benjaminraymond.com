@@ -7,11 +7,9 @@ function QuoteSection() {
     return (
         <div className="h-[100vh] flex flex-col justify-center">
             <FloatingElement proximity={20}>
-                <div className="text-white text-center select-none text-2xl">
-                    👋
-                    <span className="title-mask ml-2">
-                        I enjoy creating things that others love using
-                    </span>
+                <div className="text-gray-400 text-center select-none text-2xl">
+                    Hi 👋<br />
+                    I enjoy creating things that others <span className="title-mask">love</span> using
                 </div>
             </FloatingElement>
             <Parallax

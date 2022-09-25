@@ -1,6 +1,5 @@
 import React from 'react';
 import FloatingCard from '../common/FloatingCard';
-import './ProjectCard.css';
 
 
 export type PropsType = {
@@ -15,7 +14,7 @@ function ProjectCard(props: PropsType) {
         <FloatingCard variant={props.variant}>
             <div
                 onClick={() => window.open(props.link)}
-                className="p-4 project-card"
+                className="p-4 max-w-[380px]"
                 title='Click to open project'
             >
                 <div className="w-full bg-black rounded-xl my-2 p-4 text-center text-white flex flex-col justify-center">

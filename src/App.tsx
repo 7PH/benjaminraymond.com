@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as classnames from 'classnames';
+import classNames from 'classnames';
 import BackgroundViz from './components/layout/BackgroundViz';
 import IntroPage from './components/page/IntroPage';
 import MainPage from './components/page/MainPage';
@@ -19,7 +19,7 @@ function App() {
 
     return (
         <div className="relative">
-            <div className={classnames('opacity-100 transition-all duration-1000', {
+            <div className={classNames('opacity-100 transition-all duration-1000', {
                 '!opacity-25': darkenBackground,
             })}>
                 <BackgroundViz />

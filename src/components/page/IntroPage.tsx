@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { play } from '../../features/viz';
-import * as classnames from 'classnames';
+import classNames from 'classnames';
 import FloatingCard from '../common/FloatingCard';
 
 
@@ -27,9 +27,9 @@ function IntroPage(props: PropsType) {
     };
 
     return (
-        <div className="h-screen pt-[30%] text-center">
+        <div className="h-screen pt-[40vh] text-center">
             <div
-                className={classnames('flex justify-center gap-4 transition-all ease-[cubic-bezier(.86,-0.2,.83,.67)]', {
+                className={classNames('h-full flex flex-col md:flex-row justify-end md:justify-center gap-4 transition-all ease-[cubic-bezier(.86,-0.2,.83,.67)]', {
                     'translate-y-[-100vh]': started,
                 })}
             >
