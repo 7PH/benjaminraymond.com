@@ -23,7 +23,7 @@ function ProjectCard(props: PropsType) {
                         {props.title}
                     </p>
                 </div>
-                <p>
+                <p className="text-center">
                     {props.description}
                 </p>
             </div>

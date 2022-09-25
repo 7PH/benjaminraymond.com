@@ -27,7 +27,7 @@ function FloatingElement(props: { proximity?: number, children: ReactNode }) {
     return (
         <div
             ref={cardRef}
-            className="card-container transition transition-all ease-linear"
+            className="card-container transition-all ease-linear"
             style={{
                 'translate': translate.x + 'px ' + translate.y + 'px',
             }}
