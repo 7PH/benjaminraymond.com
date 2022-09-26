@@ -26,7 +26,7 @@ function ProjectSections() {
         },
         {
             title: '📺 SkyChat',
-            description: 'Future-proof virutal cinema platform',
+            description: 'Future-proof virtual cinema platform',
             link: 'https://github.com/skychatorg/skychat',
             position: 'end',
         },
