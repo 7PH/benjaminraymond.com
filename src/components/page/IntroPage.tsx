@@ -6,7 +6,7 @@ import FloatingCard from '../common/FloatingCard';
 
 
 export type PropsType = {
-    onSkipIntro: () => void,
+    onIntroFinished: () => void,
     onPlayIntro: () => void,
 };
 
@@ -23,7 +23,7 @@ function IntroPage(props: PropsType) {
         dispatch(play());
         props.onPlayIntro();
         await timeout(7000);
-        props.onSkipIntro();
+        props.onIntroFinished();
     };
 
     return (
@@ -43,7 +43,7 @@ function IntroPage(props: PropsType) {
                 </FloatingCard>
                 <FloatingCard proximity={5} variant={1}>
                     <div
-                        onClick={props.onSkipIntro}
+                        onClick={props.onIntroFinished}
                         className="px-6 py-3 text-2xl text-white"
                     >
                         ⛔ Skip intro

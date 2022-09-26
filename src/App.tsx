@@ -5,14 +5,18 @@ import IntroPage from './components/page/IntroPage';
 import MainPage from './components/page/MainPage';
 
 function App() {
+    /**
+     * Page to show
+     */
     const [page, setPage] = useState<'intro' | 'main'>('intro');
+
+    /**
+     * Whether the visualization should be darken
+     */
     const [darkenBackground, setDarkenBackground] = useState<boolean>(true);
 
-    const onPlayIntro = () => {
-        setDarkenBackground(false);
-    };
-
-    const onSkipIntro = () => {
+    // When intro is finished (including skipped)
+    const onIntroFinished = () => {
         setDarkenBackground(false);
         setPage('main');
     };
@@ -26,8 +30,8 @@ function App() {
             </div>
             { page === 'intro' &&
                 <IntroPage
-                    onPlayIntro={onPlayIntro}
-                    onSkipIntro={onSkipIntro}
+                    onPlayIntro={() => setDarkenBackground(false)}
+                    onIntroFinished={onIntroFinished}
                 />
             }
             { page === 'main' &&

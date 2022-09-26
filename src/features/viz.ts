@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 export const vizSlice = createSlice({
-    name: 'counter',
+    name: 'viz',
     initialState: {
         playing: false,
     },
