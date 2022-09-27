@@ -36,7 +36,7 @@ function IntroSection() {
                 </FloatingElement>
             </div>
             <div
-                className='absolute bottom-[calc(100vh - 100%)] w-full flex justify-center transition-all duration-500 pb-4 text-4xl'
+                className='absolute w-full flex justify-center transition-all duration-500 pb-4 text-4xl'
                 style={{ bottom: expandBottomPosition }}
             >
                 <Parallax
