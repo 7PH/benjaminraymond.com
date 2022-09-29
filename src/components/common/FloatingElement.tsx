@@ -4,10 +4,10 @@ import { useHoverDirty, useMouse } from 'react-use';
 
 /**
  * 
- * @param {?Number} proximity Element proximity. Defaults to 20.
+ * @param {number} proximity Element proximity, between 0 and 100.
  * @returns 
  */
-function FloatingElement(props: { proximity?: number, children: ReactNode }) {
+function FloatingElement(props: { proximity: number, children: ReactNode }) {
     // Tracks mouse position related to this element
     const cardRef = useRef<HTMLDivElement>(null);
     const { elX, elY, elW, elH } = useMouse(cardRef);
@@ -28,7 +28,7 @@ function FloatingElement(props: { proximity?: number, children: ReactNode }) {
         const relativeY = Math.max(-1, Math.min(1, (elY - elH / 2) / innerHeight));
         // Compute general ratio to apply to the distance ratio
         // When element is hovered, element moves less to optimize UX
-        const proximity = (props.proximity || 10);
+        const proximity = props.proximity;
         const ratio = hovered ? Math.round(proximity * .25) : proximity;
         setTranslate({ x: relativeX * ratio, y: relativeY * ratio });
     }, [elX, elY, elW, elH, hovered]);

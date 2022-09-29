@@ -3,7 +3,7 @@ import FloatingElement from './FloatingElement';
 import './FloatingCard.css';
 
 
-function FloatingCard(props: { proximity?: number, variant?: number, children: ReactNode }) {
+function FloatingCard(props: { proximity: number, variant?: number, children: ReactNode }) {
     return (
         <FloatingElement proximity={props.proximity}>
             <div
