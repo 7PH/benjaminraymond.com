@@ -9,10 +9,10 @@ import { Parallax } from 'react-scroll-parallax';
 function IntroSection() {
     // Top position of the title, used for entering animation
     const [titleTopPosition, setTitleTopPosition] = useState<string>('-300px');
-    const [expandBottomPosition, setExpandBottomPosition] = useState<string>('-300px');
+    const [expandTopPosition, setExpandTopPosition] = useState<string>('calc(var(--viewport-height) + 200px)');
     useEffect(() => {
         setTitleTopPosition('30px');
-        setExpandBottomPosition('calc((100vh - 100%))');
+        setExpandTopPosition('calc(var(--viewport-height) - 56px)');
     }, []);
 
     function onClickExpand() {
@@ -37,7 +37,7 @@ function IntroSection() {
             </div>
             <div
                 className='absolute w-full flex justify-center transition-all duration-500 pb-4 text-4xl'
-                style={{ bottom: expandBottomPosition }}
+                style={{ top: expandTopPosition }}
             >
                 <Parallax
                     opacity={[1, 0]}

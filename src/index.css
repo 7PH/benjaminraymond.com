@@ -7,6 +7,11 @@
 
 :root {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+
+    /**
+     * Globally set a viewport height variable to handle the mobile navbar height issue
+     */
+    --viewport-height: 100%;
 }
 body, #root {
     @apply h-full w-full;
