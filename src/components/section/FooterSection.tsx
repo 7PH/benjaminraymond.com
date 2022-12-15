@@ -20,7 +20,7 @@ function FooterSection() {
                         rel="noopener noreferrer"
                         className="title-mask text-lg"
                     >
-                        Github
+                        GitHub
                     </a>
                 </FloatingElement>
                 <FloatingElement proximity={5}>
