@@ -10,13 +10,13 @@ import { useHoverDirty, useMouse } from 'react-use';
 function FloatingElement(props: { proximity: number, children: ReactNode }) {
     // Tracks mouse position related to this element
     const cardRef = useRef<HTMLDivElement>(null);
-    const { elX, elY, elW, elH } = useMouse(cardRef);
+    const { elX, elY, elW, elH } = useMouse(cardRef as React.RefObject<HTMLDivElement>);
     
     // CSS translate property applied to the floating element
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
 
     // Whether this element is hovered
-    const hovered = useHoverDirty(cardRef, true);
+    const hovered = useHoverDirty(cardRef as React.RefObject<HTMLDivElement>, true);
 
     /**
      * Update CSS translate property when mouse moved or hovered this element

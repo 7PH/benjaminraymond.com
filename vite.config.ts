@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 import * as path from 'path';
 
 
 export default defineConfig({
     plugins: [
         react(),
+        tailwindcss(),
     ],
     resolve:{
         alias:{
@@ -16,8 +18,10 @@ export default defineConfig({
         outDir: 'docs',
         rollupOptions: {
             output: {
-                manualChunks: {
-                    'poweraudio': ['poweraudio'],
+                manualChunks(id) {
+                    if (id.includes('poweraudio')) {
+                        return 'poweraudio';
+                    }
                 },
             },
         },
