@@ -23,7 +23,7 @@ function BackgroundViz() {
     const [scrollOverhead, setScrollOverhead] = useState(200);
 
     /**
-     * Initialize visualization on mount
+     * Initialize visualization on mount, clean up on unmount
      */
     useEffect(() => {
         if (! ref.current) {
@@ -37,6 +37,10 @@ function BackgroundViz() {
         });
         setAudio(audio);
         setViz(viz);
+        return () => {
+            audio.pause();
+            audio.src = '';
+        };
     }, []);
 
     /**
